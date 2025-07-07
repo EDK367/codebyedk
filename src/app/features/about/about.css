@@ -29,6 +29,9 @@
   --_s: .3s;
 }
 
+.text h1.greeting:hover ~ h2.title {
+  color: var(--primary-color);
+}
 
 .text h1 {
   font-size: 3rem; 
@@ -41,6 +44,7 @@
   font-size: 1.8rem;
   color: var(--text-color);
   margin-bottom: 20px;
+  transition: color 2s ease;
 }
 
 .text p {

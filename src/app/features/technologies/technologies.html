@@ -1,0 +1,16 @@
+<main>
+  <div class="techno">
+    <div class="title">
+      <h1>Technologies</h1>
+    </div>
+    <div class="techno-container">
+      <ul class="tech-list">
+        @for (t of tech; track t.name) {
+          <li class="tech-badge">
+            <i [class]="t.icon"></i> {{ t.name }}
+          </li>
+        }
+      </ul>
+    </div>
+  </div>
+</main>
