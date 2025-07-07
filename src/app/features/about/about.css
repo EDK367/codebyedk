@@ -1,0 +1,75 @@
+.about {
+  display: flex;
+  align-items: center;
+  gap: 100px;
+  padding: 100px;
+  background-color: #111;
+  border-radius: 10px;
+}
+
+.text h1.greeting {
+  --b: 0.1em;  
+  --c: var(--accent-color);
+
+  color: #0000;
+  padding-block: var(--b);
+  background:
+    linear-gradient(var(--c) 50%, var(--primary-color) 0) 0% calc(100% - var(--_p, 0%)) / 100% 200%,
+    linear-gradient(var(--c) 0 0) 0% var(--_p, 0%) / var(--_p, 0%) var(--b) no-repeat;
+
+  -webkit-background-clip: text, padding-box;
+  background-clip: text, padding-box;
+  transition:
+    .3s var(--_s, 0s) linear,
+    background-size .3s calc(.3s - var(--_s, 0s));
+}
+
+.text h1.greeting:hover {
+  --_p: 100%;
+  --_s: .3s;
+}
+
+
+.text h1 {
+  font-size: 3rem; 
+  color: var(--primary-color);
+  margin-bottom: 20px;
+}
+
+
+.text h2 {
+  font-size: 1.8rem;
+  color: var(--text-color);
+  margin-bottom: 20px;
+}
+
+.text p {
+  font-size: 1.4rem;
+  color: var(--text-color);
+  line-height: 1.8;
+}
+
+.image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.image img {
+  width: 400px; 
+  height: auto;
+  border-radius: 12px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.image img:hover {
+  transform: scale(1.05);
+  box-shadow:
+    0 0 15px var(--accent-color),
+    0 0 30px var(--accent-color),
+    0 0 45px var(--accent-color);
+}
+
+.text {
+  flex: 2;
+}

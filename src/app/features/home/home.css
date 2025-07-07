@@ -1,0 +1,117 @@
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: 'Segoe UI', sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--secondary-color);
+    height: 70px;
+    box-shadow:
+        0 0 10px var(--secondary-color),
+        0 0 10px var(--secondary-color),
+        0 0 20px var(--secondary-color);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 0 20px;
+}
+
+.name {
+    color: var(--text-color);
+    font-size: 1.5rem;
+    text-shadow:
+        0 0 6px var(--primary-color),
+        0 0 12px var(--primary-color);
+}
+
+.nav-right a {
+    margin-left: 20px;
+}
+
+.name {
+    transition: color 0.5s ease, text-shadow 0.5s ease-in-out;
+}
+
+.name:hover {
+  color: var(--accent-color);
+  text-shadow:
+    0 0 20px var(--accent-color),
+    0 0 40px var(--accent-color);
+}
+
+a {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: var(--text-color);
+    text-shadow:
+        0 0 6px var(--text-color);
+    margin-right: 20px;
+    color: var(--text-color);
+    text-decoration: none;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+    text-shadow:
+        0 0 6px var(--primary-color),
+        0 0 12px var(--primary-color),
+        0 0 24px var(--primary-color),
+        0 0 48px var(--primary-color);
+}
+
+a:hover {
+    color: var(--accent-color);
+    text-shadow:
+        0 0 12px var(--accent-color),
+        0 0 24px var(--accent-color),
+        0 0 36px var(--accent-color),
+        0 0 60px var(--accent-color);
+}
+
+h1 {
+    color: var(--primary-color);
+}
+
+.container {
+    margin-top: 70px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 100px;
+    padding: 40px;
+}
+
+section {
+    padding: 40px;
+    background-color: #111;
+    border-radius: 10px;
+    box-shadow:
+        0 0 10px var(--primary-color),
+        0 0 20px var(--primary-color);
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    text-shadow: 0 0 6px var(--text-color);
+    box-shadow:
+        0 0 15px var(--secondary-color),
+        0 0 30px var(--secondary-color);
+    margin-top: auto;
+}
