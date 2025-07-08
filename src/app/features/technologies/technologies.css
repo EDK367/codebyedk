@@ -3,6 +3,7 @@
     flex-direction: column;
     align-items: center;
     gap: 25px;
+    padding: 20px;
 }
 
 .title h1 {
@@ -12,6 +13,7 @@
     text-shadow:
         0 0 20px var(--accent-color),
         0 0 40px var(--accent-color);
+    text-align: center;
 }
 
 .tech-list {
@@ -21,6 +23,7 @@
     justify-content: center;
     flex-wrap: wrap;
     gap: 75px;
+    width: 100%;
 }
 
 .tech-badge {
@@ -46,4 +49,115 @@
 .tech-badge:hover {
   transform: scale(1.35); 
   box-shadow: 0 4px 10px var(--secondary-color); 
+}
+
+@media (max-width: 1200px) {
+    .tech-list {
+        gap: 60px;
+    }
+    
+    .title h1 {
+        font-size: 45px;
+    }
+    
+    .tech-badge {
+        min-width: 220px;
+        font-size: 28px;
+    }
+    
+    .tech-badge i {
+        font-size: 36px;
+    }
+}
+
+@media (max-width: 992px) {
+    .tech-list {
+        gap: 50px;
+    }
+    
+    .title h1 {
+        font-size: 40px;
+    }
+    
+    .tech-badge {
+        min-width: 200px;
+        font-size: 25px;
+    }
+    
+    .tech-badge i {
+        font-size: 32px;
+    }
+}
+
+@media (max-width: 768px) {
+    .techno {
+        gap: 20px;
+    }
+    
+    .tech-list {
+        gap: 40px;
+    }
+    
+    .title h1 {
+        font-size: 36px;
+    }
+    
+    .tech-badge {
+        min-width: 180px;
+        font-size: 22px;
+        padding: 5px 10px;
+        gap: 12px;
+    }
+    
+    .tech-badge i {
+        font-size: 28px;
+    }
+}
+
+@media (max-width: 576px) {
+    .techno {
+        gap: 15px;
+        padding: 15px;
+    }
+    
+    .tech-list {
+        gap: 30px;
+    }
+    
+    .title h1 {
+        font-size: 30px;
+        text-shadow:
+            0 0 15px var(--accent-color),
+            0 0 30px var(--accent-color);
+    }
+    
+    .tech-badge {
+        min-width: 160px;
+        font-size: 20px;
+        padding: 4px 8px;
+        gap: 10px;
+    }
+    
+    .tech-badge i {
+        font-size: 24px;
+    }
+    
+    .tech-badge:hover {
+        transform: scale(1.25);
+    }
+}
+
+@media (max-width: 400px) {
+    .tech-list {
+        gap: 20px;
+    }
+    
+    .tech-badge {
+        min-width: 140px;
+        font-size: 18px;
+    }
+    
+    .tech-badge i {
+        font-size: 22px;
+    }
 }
