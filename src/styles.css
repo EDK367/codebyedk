@@ -1,11 +1,13 @@
-
 :root {
-    --primary-color: #ff003c;
-    --secondary-color: #b3002d;
-    --accent-color: #39ff14;
-    --background-color: #0a0a0a;
-    --text-color: #e0e0e0;
-} 
+    --primary-color: color(display-p3 0.50 0.10 0.16);      
+    --secondary-color: color(display-p3 0.52 0.12 0.22);     
+    --accent-color: color(display-p3 0.32 0.82 0.50);        
+    --background-color: color(display-p3 0.04 0.06 0.12);    
+    --text-color: color(display-p3 0.92 0.94 0.89);       
+
+    --border-color: color(display-p3 0.12 0.15 0.22);        
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -21,6 +23,7 @@ body {
 
 html,
 body {
+    scroll-behavior: smooth;
     height: 100%;
 }
 
