@@ -61,10 +61,10 @@
     height: 150%;
     background: linear-gradient(45deg,
             transparent,
-            var(--accent-color),
+            var(--primary-color),
             transparent);
     transform: translateX(-100%) rotate(45deg);
-    transition: transform 0.9s ease;
+    transition: transform 0.5s ease;
 }
 
 .icon-box:hover {
@@ -88,6 +88,7 @@
 }
 
 .icon-box:hover i {
+    color: var(--primary-color);
     transform: rotate(10deg) scale(1.4);
     filter: drop-shadow(0 0 10px var(--border-color));
 }
