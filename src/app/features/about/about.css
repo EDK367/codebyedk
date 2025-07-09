@@ -10,7 +10,7 @@
 .text h1.greeting {
   --b: 0.1em;
   --c: var(--accent-color);
-
+  cursor: pointer;
   color: #0000;
   padding-block: var(--b);
   background:
@@ -60,6 +60,7 @@
 }
 
 .image img {
+  cursor: pointer;
   width: 400px;
   height: auto;
   border-radius: 12px;
