@@ -1,0 +1,27 @@
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: 'Segoe UI', sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+.container {
+    width: 100%;
+    margin-top: 70px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 100px;
+    padding: 40px;
+}
+section {
+    padding: 40px;
+    background-color: var(--primary-color);
+    border-radius: 10px;
+    box-shadow:
+        0 0 10px var(--primary-color),
+        0 0 20px var(--primary-color);
+}
