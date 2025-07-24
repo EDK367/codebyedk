@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
+import { MoreButton } from '../../shared/more-button/more-button';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-technologies',
-  imports: [],
+  imports: [MoreButton, RouterLink],
   templateUrl: './technologies.html',
   styleUrl: './technologies.css'
 })

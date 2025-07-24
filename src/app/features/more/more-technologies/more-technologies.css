@@ -1,0 +1,279 @@
+main {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 40px;
+    box-sizing: border-box;
+}
+
+h1 {
+    color: var(--accent-color);
+    font-weight: 700;
+    font-size: 50px;
+    text-shadow:
+        0 0 20px var(--accent-color),
+        0 0 40px var(--accent-color);
+    text-align: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    box-sizing: border-box;
+    transition: font-size 0.3s ease;
+}
+
+.container {
+    width: 100%;
+    margin-top: 70px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 100px;
+    padding: 40px 60px;
+    box-sizing: border-box;
+}
+
+p {
+    font-size: 1.4rem;
+    color: var(--text-color);
+    line-height: 1.8;
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+
+section {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-align: justify;
+    padding: 40px 50px;
+    background-color: var(--background-color);
+    border-radius: 10px;
+    box-shadow:
+        0 0 10px var(--primary-color),
+        0 0 20px var(--primary-color);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+section>* {
+    position: relative;
+    z-index: 2;
+}
+
+section::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 180%;
+    height: 200%;
+    background: linear-gradient(0deg,
+            transparent,
+            transparent 30%,
+            var(--accent-color));
+    transform: rotate(-45deg);
+    transition: all 0.5s ease;
+    opacity: 0;
+    z-index: 1;
+}
+
+section:hover {
+    transform: scale(1);
+    box-shadow:
+        0 2px 5px var(--text-color),
+        0 12px 20px var(--accent-color),
+        0 0 30px var(--background-color);
+}
+
+section:hover::before {
+    opacity: 0.8;
+    transform: rotate(-45deg) translateY(100%);
+}
+
+.tech-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    padding: 20px 40px;
+    box-sizing: border-box;
+}
+
+.tech-section h1 {
+    color: var(--accent-color);
+    font-weight: 700;
+    font-size: 42px;
+    text-shadow:
+        0 0 20px var(--accent-color),
+        0 0 40px var(--accent-color);
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 0 10px;
+    box-sizing: border-box;
+    transition: font-size 0.3s ease;
+}
+
+.tech-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 60px;
+    width: 100%;
+}
+
+.tech-badge {
+    min-width: 240px;
+    background-color: var(--accent-color);
+    color: var(--background-color);
+    border-radius: 12px;
+    padding: 8px 14px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    font-size: 28px;
+    transition: transform 0.8s ease;
+    cursor: pointer;
+}
+
+.tech-badge i {
+    font-size: 36px;
+}
+
+.tech-badge:hover {
+    transform: scale(1.3);
+    box-shadow: 0 4px 12px var(--secondary-color);
+}
+
+@media (max-width: 1200px) {
+
+    h1,
+    .tech-section h1 {
+        font-size: 40px;
+    }
+
+    .tech-badge {
+        min-width: 220px;
+        font-size: 26px;
+    }
+
+    .tech-badge i {
+        font-size: 34px;
+    }
+}
+
+@media (max-width: 992px) {
+
+    h1,
+    .tech-section h1 {
+        font-size: 36px;
+    }
+
+    .tech-badge {
+        min-width: 200px;
+        font-size: 24px;
+    }
+
+    .tech-badge i {
+        font-size: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    main {
+        padding: 15px 20px;
+    }
+
+    .container {
+        padding: 20px 30px;
+    }
+
+    section {
+        padding: 30px 35px;
+    }
+
+    .tech-section {
+        gap: 20px;
+        padding: 15px 25px;
+    }
+
+    h1,
+    .tech-section h1 {
+        font-size: 32px;
+    }
+
+    .tech-badge {
+        min-width: 180px;
+        font-size: 22px;
+        padding: 6px 12px;
+        gap: 12px;
+    }
+
+    .tech-badge i {
+        font-size: 28px;
+    }
+}
+
+@media (max-width: 576px) {
+    main {
+        padding: 10px 15px;
+    }
+
+    .container {
+        padding: 15px 20px;
+    }
+
+    section {
+        padding: 25px 20px;
+    }
+
+    .tech-section {
+        gap: 15px;
+        padding: 10px 15px;
+    }
+
+    h1,
+    .tech-section h1 {
+        font-size: 28px;
+        text-shadow:
+            0 0 15px var(--accent-color),
+            0 0 30px var(--accent-color);
+    }
+
+    .tech-badge {
+        min-width: 160px;
+        font-size: 20px;
+        padding: 4px 10px;
+        gap: 10px;
+    }
+
+    .tech-badge i {
+        font-size: 24px;
+    }
+
+    .tech-badge:hover {
+        transform: scale(1.2);
+    }
+}
+
+@media (max-width: 400px) {
+    .container {
+        padding: 10px 12px;
+    }
+
+    .tech-list {
+        gap: 20px;
+    }
+
+    .tech-badge {
+        min-width: 140px;
+        font-size: 18px;
+    }
+
+    .tech-badge i {
+        font-size: 22px;
+    }
+}
