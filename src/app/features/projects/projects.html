@@ -31,6 +31,11 @@
                         JavaScript-inspired syntax.</p>
                 </mat-card-content>
                 <img mat-card-image src="assets/img/comp-script.png" alt="Project 1">
+                <div class="github-btn-wrapper">
+                  <a class="github-btn" href="https://github.com/EDK367/CompScript" target="_blank" rel="noopener">
+                      <i class="fab fa-github"></i> GitHub
+                  </a>
+                </div>
             </mat-card>
 
 
@@ -62,6 +67,11 @@
                         management of data related to teams, players, tournaments, matches, and more.</p>
                 </mat-card-content>
                 <img mat-card-image src="assets/img/logo-campus-league.png" alt="Project 1">
+                <div class="github-btn-wrapper">
+                  <a class="github-btn" href="https://github.com/EDK367/Campus_League" target="_blank" rel="noopener">
+                      <i class="fab fa-github"></i> GitHub
+                  </a>
+                </div>
 
             </mat-card>
 
@@ -90,7 +100,22 @@
                         indicators of fatigue.</p>
                 </mat-card-content>
                 <img mat-card-image src="assets/img/ojo-vigilante.png" alt="Project 1">
+                <div class="github-btn-wrapper">
+                  <a class="github-btn" href="https://github.com/EDK367/Ojo_Vigilante" target="_blank" rel="noopener">
+                      <i class="fab fa-github"></i> GitHub
+                  </a>
+                </div>
             </mat-card>
+        </div>
+        <div class="more-projects-section">
+            <app-more-button text="More Projects" (click)="openMoreProjectsPopup()"></app-more-button>
+        </div>
+        <div class="popup-overlay" *ngIf="showMoreProjectsPopup" (click)="closeMoreProjectsPopup()">
+            <div class="popup-content" (click)="$event.stopPropagation()">
+                <span class="popup-close" (click)="closeMoreProjectsPopup()">&times;</span>
+                <h2>More Projects</h2>
+                <p>This section is under construction.<br>
+            </div>
         </div>
     </div>
 </main>
