@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Nav } from '../nav/nav';
 import { About } from '../about/about';
 import { Technologies } from '../technologies/technologies';
 import { Contact } from '../contact/contact';
 import { Projects } from "../projects/projects";
+import { TranslationService } from '../../core/services/translation.service';
 
 @Component({
   selector: 'app-home',
@@ -12,5 +13,5 @@ import { Projects } from "../projects/projects";
   styleUrl: './home.css'
 })
 export class Home {
-
+  ts = inject(TranslationService);
 }

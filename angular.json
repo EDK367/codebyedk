@@ -95,8 +95,23 @@
             "baseHref": "/",
             "cname": "codebyedk.me"
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
+          }
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "6999c513-1cad-4af2-8f5f-7e2f509b00d8",
+    "schematicCollections": [
+      "angular-eslint"
+    ]
   }
 }

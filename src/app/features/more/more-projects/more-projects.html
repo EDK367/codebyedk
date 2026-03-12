@@ -1,1 +1,52 @@
-<p>more-projects works!</p>
+<main>
+    <nav>
+        <app-nav></app-nav>
+    </nav>
+    <div class="projects-container">
+        <div class="header-content">
+            <a [routerLink]="['/']">
+               <app-more-button text="&larr;"></app-more-button>
+            </a>
+            <h1 class="page-title">{{ ts.t().MORE_PROJECTS_BTN }}</h1>
+        </div>
+        
+        <div class="filter-controls">
+            <button class="filter-btn" [class.active]="filter === 'All'" (click)="setFilter('All')">All</button>
+            <button class="filter-btn" [class.active]="filter === 'Frontend'" (click)="setFilter('Frontend')">Frontend</button>
+            <button class="filter-btn" [class.active]="filter === 'Backend'" (click)="setFilter('Backend')">Backend</button>
+            <button class="filter-btn" [class.active]="filter === 'Fullstack'" (click)="setFilter('Fullstack')">Fullstack</button>
+            <button class="filter-btn" [class.active]="filter === 'Java'" (click)="setFilter('Java')">Java</button>
+            <button class="filter-btn" [class.active]="filter === 'Python'" (click)="setFilter('Python')">Python</button>
+        </div>
+
+        <div class="projects-grid">
+            <div class="project-glass-card" *ngFor="let project of filteredProjects">
+                <div class="card-image-box">
+                    <img [src]="project.img" [alt]="project.title" class="card-img">
+                    <div class="card-overlay">
+                        <div class="card-tech-badges">
+                            <span class="badge" *ngFor="let t of project.tech">
+                                <i [class]="t.icon"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-body">
+                    <h2 class="card-title">{{ project.title }}</h2>
+                    <p class="card-desc">{{ $any(ts.t())[project.descKey] }}</p>
+                    
+                    <div class="card-footer">
+                        <a class="action-link github" [href]="project.github" target="_blank" rel="noopener">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a class="action-link explore" [routerLink]="['/project', project.id]">
+                            <span>{{ ts.t().DETAILS_BTN }}</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

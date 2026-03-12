@@ -1,14 +1,15 @@
 <main>
     <nav>
         <div class="nav-left">
-            <h1 class="name">Erikson Orozco – Engineer in Progress</h1>
+            <h1 class="name" style="cursor: pointer" [routerLink]="['/']">{{ ts.t().NAV_NAME }}</h1>
         </div>
-        <div class="nav-right">
-            <a href="#about">About Me</a>
-            <a href="#technologies">Technologies</a>
-            <a href="#projects">Projects</a>
-            <a href="#contact">Contact</a>
-            <a href="assets/doc/CVErikson.pdf" target="_blank">CV</a>
+        <div class="nav-right" style="display: flex; align-items: center; gap: 1rem;">
+            <a href="#about">{{ ts.t().NAV_ABOUT }}</a>
+            <a href="#technologies">{{ ts.t().NAV_TECHNOLOGIES }}</a>
+            <a href="#projects">{{ ts.t().NAV_PROJECTS }}</a>
+            <a href="#contact">{{ ts.t().NAV_CONTACT }}</a>
+            <a href="assets/doc/CVErikson.pdf" target="_blank">{{ ts.t().NAV_CV }}</a>
+            <app-more-button [text]="ts.currentLanguage() === 'en' ? 'ES | EN' : 'EN | ES'" (click)="ts.toggleLanguage()"></app-more-button>
         </div>
     </nav>
 </main>

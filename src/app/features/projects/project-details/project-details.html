@@ -1,0 +1,63 @@
+<main>
+    <nav>
+        <app-nav></app-nav>
+    </nav>
+    <div class="container project-details-container">
+        <div class="back-button-wrapper">
+            <a [routerLink]="['/']">
+               <app-more-button text="&larr;"></app-more-button>
+            </a>
+        </div>
+        
+        <div *ngIf="getProjectData() as project; else notFound" class="project-showcase">
+            <!-- Hero Header -->
+            <header class="project-hero">
+                <h1 class="hero-title">{{ project.title }}</h1>
+                <div class="hero-divider"></div>
+            </header>
+
+            <div class="project-main-grid">
+                <!-- Left Column: Showcase & Media -->
+                <div class="showcase-container">
+                    <div class="media-frame">
+                        <img [src]="project.img" [alt]="project.title" class="main-image">
+                        <div class="image-overlay"></div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Details & Narrative -->
+                <div class="details-narrative">
+                    <section class="info-block glass-card">
+                        <h2 class="section-label"><i class="fas fa-file-alt"></i> {{ ts.currentLanguage() === 'es' ? 'Sobre el Proyecto' : 'About the Project' }}</h2>
+                        <div class="project-description">
+                            <p>{{ ts.t()[project.descKey] }}</p>
+                        </div>
+                    </section>
+
+                    <section class="info-block glass-card">
+                        <h2 class="section-label"><i class="fas fa-code-branch"></i> {{ ts.currentLanguage() === 'es' ? 'Tecnologías' : 'Technologies' }}</h2>
+                        <div class="tech-stack-display">
+                            <div class="tech-pill" *ngFor="let t of project.tech">
+                                <i [class]="t.icon"></i>
+                                <span>{{ t.name }}</span>
+                            </div>
+                        </div>
+                    </section>
+
+                    <div class="cta-actions">
+                        <a class="premium-btn github" [href]="project.github" target="_blank" rel="noopener">
+                            <i class="fab fa-github"></i>
+                            <span>{{ ts.t().GITHUB_BTN }}</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <ng-template #notFound>
+            <div class="not-found">
+                <h2>Project Not Found</h2>
+            </div>
+        </ng-template>
+    </div>
+</main>

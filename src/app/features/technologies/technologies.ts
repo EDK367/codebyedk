@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MoreButton } from '../../shared/more-button/more-button';
 import { RouterLink } from '@angular/router';
+import { TranslationService } from '../../core/services/translation.service';
 
 @Component({
   selector: 'app-technologies',
@@ -9,6 +10,7 @@ import { RouterLink } from '@angular/router';
   styleUrl: './technologies.css'
 })
 export class Technologies {
+  ts = inject(TranslationService);
 
   tech = [
     { name: "Java", icon: "fab fa-java" },

@@ -1,7 +1,7 @@
 <main>
     <div class="projects">
         <div class="title">
-            <h1>My Projects</h1>
+            <h1>{{ ts.t().PROJECTS_TITLE }}</h1>
         </div>
         <div class="projects-grid">
 
@@ -24,16 +24,15 @@
                     </div>
                 </div>
                 <mat-card-content>
-                    <p>This project is a Java-based compiler simulator
-                        that mimics the syntax and behavior of JavaScript,
-                        implemented using JFlex, JCup, and Swing. It features
-                        a custom lexer and parser designed to recognize a
-                        JavaScript-inspired syntax.</p>
+                    <p>{{ ts.t().PROJECT_COMP_DESC }}</p>
                 </mat-card-content>
                 <img mat-card-image src="assets/img/comp-script.png" alt="Project 1">
-                <div class="github-btn-wrapper">
+                <div class="github-btn-wrapper" style="display: flex; gap: 10px;">
                   <a class="github-btn" href="https://github.com/EDK367/CompScript" target="_blank" rel="noopener">
-                      <i class="fab fa-github"></i> GitHub
+                      <i class="fab fa-github"></i> {{ ts.t().GITHUB_BTN }}
+                  </a>
+                  <a class="github-btn details-btn" [routerLink]="['/project', 'comp-script']" style="color: var(--accent-color); border-color: var(--accent-color); box-shadow: 0 0 8px var(--accent-color);">
+                      <i class="fas fa-info-circle"></i> {{ ts.t().DETAILS_BTN }}
                   </a>
                 </div>
             </mat-card>
@@ -58,18 +57,15 @@
                     </div>
                 </div>
                 <mat-card-content>
-                    <p>Campus League is a platform specialized in the creation,
-                        management, and administration of university sports leagues.
-                        The system is built with cutting-edge technologies such as
-                        Spring Boot for the backend and Angular for the frontend,
-                        ensuring performance, scalability, and a smooth user experience.
-                        The database used is MySQL, allowing for robust and efficient
-                        management of data related to teams, players, tournaments, matches, and more.</p>
+                    <p>{{ ts.t().PROJECT_CAMPUS_DESC }}</p>
                 </mat-card-content>
                 <img mat-card-image src="assets/img/logo-campus-league.png" alt="Project 1">
-                <div class="github-btn-wrapper">
+                <div class="github-btn-wrapper" style="display: flex; gap: 10px;">
                   <a class="github-btn" href="https://github.com/EDK367/Campus_League" target="_blank" rel="noopener">
-                      <i class="fab fa-github"></i> GitHub
+                      <i class="fab fa-github"></i> {{ ts.t().GITHUB_BTN }}
+                  </a>
+                  <a class="github-btn details-btn" [routerLink]="['/project', 'campus-league']" style="color: var(--accent-color); border-color: var(--accent-color); box-shadow: 0 0 8px var(--accent-color);">
+                      <i class="fas fa-info-circle"></i> {{ ts.t().DETAILS_BTN }}
                   </a>
                 </div>
 
@@ -92,30 +88,23 @@
                     </div>
                 </div>
                 <mat-card-content>
-                    <p>Vigilant Eye is an application designed to prevent car
-                        accidents caused by falling asleep at the wheel.
-                        Using advanced facial recognition technology, the app
-                        monitors key facial gestures in real time, such as yawning,
-                        short and long blinks, head nodding, eye rubbing, and other
-                        indicators of fatigue.</p>
+                    <p>{{ ts.t().PROJECT_OJO_DESC }}</p>
                 </mat-card-content>
                 <img mat-card-image src="assets/img/ojo-vigilante.png" alt="Project 1">
-                <div class="github-btn-wrapper">
+                <div class="github-btn-wrapper" style="display: flex; gap: 10px;">
                   <a class="github-btn" href="https://github.com/EDK367/Ojo_Vigilante" target="_blank" rel="noopener">
-                      <i class="fab fa-github"></i> GitHub
+                      <i class="fab fa-github"></i> {{ ts.t().GITHUB_BTN }}
+                  </a>
+                  <a class="github-btn details-btn" [routerLink]="['/project', 'vigilant-eye']" style="color: var(--accent-color); border-color: var(--accent-color); box-shadow: 0 0 8px var(--accent-color);">
+                      <i class="fas fa-info-circle"></i> {{ ts.t().DETAILS_BTN }}
                   </a>
                 </div>
             </mat-card>
         </div>
         <div class="more-projects-section">
-            <app-more-button text="More Projects" (click)="openMoreProjectsPopup()"></app-more-button>
-        </div>
-        <div class="popup-overlay" *ngIf="showMoreProjectsPopup" (click)="closeMoreProjectsPopup()">
-            <div class="popup-content" (click)="$event.stopPropagation()">
-                <span class="popup-close" (click)="closeMoreProjectsPopup()">&times;</span>
-                <h2>More Projects</h2>
-                <p>This section is under construction.<br>
-            </div>
+            <a [routerLink]="['/more-projects']" style="text-decoration: none;">
+                <app-more-button [text]="ts.t().MORE_PROJECTS_BTN"></app-more-button>
+            </a>
         </div>
     </div>
 </main>

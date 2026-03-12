@@ -1,7 +1,7 @@
 <main>
   <div class="techno">
     <div class="title">
-      <h1>Skills</h1>
+      <h1>{{ ts.t().TECH_TITLE }}</h1>
     </div>
     <div class="techno-container">
       <ul class="tech-list">
@@ -15,7 +15,7 @@
   </div>
   <div class="more-button">
     <a routerLink="/more-technologies">
-      <app-more-button text="More of Technologies"> Hola</app-more-button>
+      <app-more-button [text]="ts.t().MORE_TECH_BTN"></app-more-button>
     </a>
   </div>
 </main>

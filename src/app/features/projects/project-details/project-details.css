@@ -1,0 +1,225 @@
+.project-details-container {
+    padding-top: 100px;
+    padding-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--text-color);
+}
+
+.back-button-wrapper {
+    width: 100%;
+    max-width: 800px;
+    margin-bottom: 20px;
+}
+
+.project-showcase {
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+    animation: fadeIn 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Hero Section --- */
+.project-hero {
+    text-align: center;
+    position: relative;
+    padding: 20px 0;
+}
+
+.hero-title {
+    font-size: clamp(3rem, 8vw, 5rem);
+    font-weight: 800;
+    color: var(--text-color);
+    letter-spacing: -2px;
+    margin: 0;
+    text-transform: uppercase;
+    background: linear-gradient(135deg, var(--text-color) 0%, var(--accent-color) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 15px rgba(50, 130, 80, 0.3));
+}
+
+.hero-divider {
+    width: 100px;
+    height: 4px;
+    background: var(--accent-color);
+    margin: 20px auto;
+    border-radius: 2px;
+    box-shadow: 0 0 15px var(--accent-color);
+}
+
+/* --- Content Grid Layout --- */
+.project-main-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 50px;
+    align-items: start;
+}
+
+@media (min-width: 1024px) {
+    .project-main-grid {
+        grid-template-columns: 1.2fr 0.8fr;
+    }
+}
+
+/* --- Showcase Column --- */
+.showcase-container {
+    perspective: 1000px;
+}
+
+.media-frame {
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), 0 0 20px rgba(50, 130, 80, 0.2);
+    transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.media-frame:hover {
+    transform: translateY(-10px) rotateX(2deg) rotateY(-2deg);
+}
+
+.main-image {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+.image-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.4) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+/* --- Details & Narrative Column --- */
+.details-narrative {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.info-block {
+    padding: 30px;
+}
+
+.glass-card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+    transition: border-color 0.3s ease;
+}
+
+.glass-card:hover {
+    border-color: rgba(50, 130, 80, 0.3);
+}
+
+.section-label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--accent-color);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    opacity: 0.8;
+}
+
+.project-description p {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: var(--text-color);
+    opacity: 0.9;
+    margin: 0;
+    text-align: justify;
+}
+
+/* --- Tech Pills --- */
+.tech-stack-display {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.tech-pill {
+    background: rgba(var(--accent-color-rgb, 50, 130, 80), 0.1);
+    border: 1px solid rgba(50, 130, 80, 0.2);
+    padding: 10px 18px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 500;
+    color: var(--accent-color);
+    transition: all 0.3s ease;
+}
+
+.tech-pill:hover {
+    background: rgba(50, 130, 80, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(50, 130, 80, 0.1);
+}
+
+.tech-pill i {
+    font-size: 1.2rem;
+}
+
+/* --- Premium Buttons --- */
+.cta-actions {
+    margin-top: 10px;
+}
+
+.premium-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 18px 36px;
+    border-radius: 16px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+}
+
+.premium-btn.github {
+    background: var(--text-color);
+    color: var(--background-color);
+    border: none;
+}
+
+.premium-btn.github:hover {
+    transform: scale(1.02) translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+.premium-btn i {
+    font-size: 1.5rem;
+}
+
+@media (max-width: 768px) {
+    .project-showcase {
+        gap: 40px;
+    }
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    .glass-card {
+        padding: 20px;
+    }
+}

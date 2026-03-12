@@ -1,16 +1,15 @@
 <main>
   <div class="about">
     <div class="text">
-      <h1 class="greeting">Hi there! I'm Erikson</h1>
-      <h2 class="title">I'm a backend specialist</h2>
+      <h1 class="greeting">{{ ts.t().ABOUT_GREETING }}</h1>
+      <h2 class="title">{{ ts.t().ABOUT_TITLE }}</h2>
       <p class="info">
-        I'm currently pursuing a degree in Systems Engineering.
+        {{ ts.t().ABOUT_INFO_1 }}
+        {{ ts.t().ABOUT_INFO_2 }}
         <br />
-        Although I don't have professional experience yet,
+        {{ ts.t().ABOUT_INFO_3 }}
         <br />
-        I have knowledge of various technologies and a strong
-        <br />
-        passion for software development.
+        {{ ts.t().ABOUT_INFO_4 }}
       </p>
     </div>
     <div class="image">
@@ -20,7 +19,7 @@
 
   <div class="more-button">
     <a routerLink="/more-about">
-    <app-more-button text="More of Me"></app-more-button>
+    <app-more-button [text]="ts.t().ABOUT_MORE_BTN"></app-more-button>
     </a>
   </div>
 </main>
