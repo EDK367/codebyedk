@@ -52,7 +52,7 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
     const w = canvas.width, h = canvas.height;
 
     // Create multi-layer particles (deep, mid, near)
-    const count = Math.min(250, Math.floor(window.innerWidth * 0.16));
+    const count = Math.min(150, Math.floor(window.innerWidth * 0.16));
     this.particles = [];
     for (let i = 0; i < count; i++) {
       const depth = Math.random();
@@ -171,15 +171,7 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
       this.ctx.stroke();
     }
 
-    // Volumetric light at cursor
-    if (this.mouse.x > 0 && this.mouse.y > 0) {
-      const vGrad = this.ctx.createRadialGradient(this.mouse.x, this.mouse.y, 0, this.mouse.x, this.mouse.y, 300);
-      vGrad.addColorStop(0, `rgba(0, 229, 255, ${0.04 + this.mouse.speed * 0.01})`);
-      vGrad.addColorStop(0.4, `rgba(191, 90, 242, ${0.015 + this.mouse.speed * 0.005})`);
-      vGrad.addColorStop(1, 'rgba(0, 0, 0, 0)');
-      this.ctx.fillStyle = vGrad;
-      this.ctx.fillRect(0, 0, w, h);
-    }
+
 
     // Update & draw particles
     for (const p of this.particles) {
@@ -276,15 +268,7 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
     }
 
     // Mouse speed energy burst
-    if (this.mouse.speed > 8) {
-      this.energyTrails.push({
-        x: this.mouse.x, y: this.mouse.y,
-        radius: 3 + this.mouse.speed * 0.3,
-        opacity: 0.6,
-        color: Math.random() > 0.5 ? '0,229,255' : '191,90,242',
-        life: 1
-      });
-    }
+   
 
     // Draw energy trails
     for (let i = this.energyTrails.length - 1; i >= 0; i--) {
