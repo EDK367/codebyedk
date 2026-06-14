@@ -3,10 +3,21 @@
    ═══════════════════════════════════════════════════════════════ */
 
 .about-container {
+  position: relative;
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 60px;
+  overflow: hidden;
+}
+
+.section-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
 }
 
 .about-header {
