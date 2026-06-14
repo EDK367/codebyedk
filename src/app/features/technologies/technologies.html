@@ -1,21 +1,49 @@
-<main>
-  <div class="techno">
-    <div class="title">
-      <h1>{{ ts.t().TECH_TITLE }}</h1>
+<div class="technologies-container reveal">
+  <div class="tech-header reveal-scale">
+    <div class="section-badge">
+      <span class="badge-dot"></span>
+      <span class="badge-text">02 // Stack</span>
     </div>
-    <div class="techno-container">
-      <ul class="tech-list">
-        @for (t of tech; track t.name) {
-        <li class="tech-badge">
-          <i [class]="t.icon"></i> {{ t.name }}
-        </li>
-        }
-      </ul>
+    <h2 class="section-title">
+      <span class="gradient-text">{{ ts.t().TECH_TITLE }}</span>
+    </h2>
+  </div>
+
+  <div class="orbital-system-container reveal">
+    <div class="orbital-system" #orbitSystem [class.paused]="isHovering">
+      <!-- Core Node -->
+      <div class="core-node">
+        <div class="core-pulse"></div>
+        <div class="core-icon">&lt;/&gt;</div>
+      </div>
+
+      <!-- Orbit Rings -->
+      <div class="orbit-ring orbit-ring-1"></div>
+      <div class="orbit-ring orbit-ring-2"></div>
+      <div class="orbit-ring orbit-ring-3"></div>
+
+      <!-- Tech Nodes -->
+      <div *ngFor="let t of tech" 
+           class="tech-node-wrapper orbit-{{t.orbit}}" 
+           [style.--angle]="t.angle + 'deg'"
+           (mouseenter)="setHover(t.name)" 
+           (mouseleave)="setHover(null)">
+        
+        <div class="tech-node" [class.dimmed]="isHovering && hoveredTech !== t.name" [class.highlighted]="hoveredTech === t.name" [attr.data-cursor]="t.name">
+          <i [class]="t.icon" [style.color]="t.color"></i>
+          <span class="tech-tooltip">{{ t.name }}</span>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="more-button">
-    <a routerLink="/more-technologies">
-      <app-more-button [text]="ts.t().MORE_TECH_BTN"></app-more-button>
+
+  <div class="tech-actions reveal">
+    <a routerLink="/more-technologies" class="premium-button premium-button-secondary" data-cursor="View All Skills">
+      <span class="button-content">
+        {{ ts.t().MORE_TECH_BTN }}
+        <i class="fas fa-arrow-right"></i>
+      </span>
+      <span class="button-glare"></span>
     </a>
   </div>
-</main>
+</div>

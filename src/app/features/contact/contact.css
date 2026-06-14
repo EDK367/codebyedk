@@ -1,94 +1,188 @@
-.contact {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 25px;
-    padding: 20px;
+/* ═══════════════════════════════════════════════════════════════
+   CONTACT – Premium Experience
+   ═══════════════════════════════════════════════════════════════ */
+
+.contact-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 60px;
+  position: relative;
+  padding: 40px 0;
 }
 
-.title h1 {
-    color: var(--accent-color);
-    font-weight: 700;
-    font-size: 50px;
-    text-shadow:
-        0 0 20px var(--accent-color),
-        0 0 40px var(--accent-color);
-    text-align: center;
-    animation: pulse 3s infinite alternate;
+.ambient-glow {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, var(--color-bg-card-hover) 0%, transparent 60%);
+  border-radius: 50%;
+  top: var(--mouseY, 50%);
+  left: var(--mouseX, 50%);
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+  z-index: 0;
 }
 
-@keyframes pulse {
-    from {
-        opacity: 0.9;
-    }
-
-    to {
-        opacity: 1;
-        text-shadow: 0 0 30px var(--accent-color), 0 0 60px var(--accent-color);
-    }
+.contact-container:hover .ambient-glow {
+  opacity: 1;
 }
 
-.contact-links {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 75px;
-    width: 100%;
+.contact-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
 }
 
-.icon-box {
-    background-color: var(--background-color);
-    border-radius: 10%;
-    padding: 20px;
-    box-shadow:
-        0 0 5px var(--accent-color),
-        0 0 15px var(--border-color);
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.5s ease;
-    position: relative;
-    overflow: hidden;
+.section-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  width: fit-content;
+  padding: 6px 16px;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
 }
 
-.icon-box::before {
-    content: '';
-    position: absolute;
-    width: 150%;
-    height: 150%;
-    background: linear-gradient(45deg,
-            transparent,
-            var(--primary-color),
-            transparent);
-    transform: translateX(-100%) rotate(45deg);
-    transition: transform 0.5s ease;
+.section-badge .badge-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--color-red);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--color-red-glow);
 }
 
-.icon-box:hover {
-    transform: scale(1.1);
-    box-shadow:
-        0 0 25px var(--secondary-color),
-        0 0 50px var(--primary-color);
+.section-badge .badge-text {
+  font-family: 'Space Grotesk', monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
 }
 
-.icon-box:hover::before {
-    transform: translateX(100%) rotate(45deg);
+.section-title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  margin: 0;
+  line-height: 1.1;
 }
 
-
-.icon-box i {
-    color: var(--accent-color);
-    font-size: 40px;
-    position: relative;
-    z-index: 1;
-    transition: transform 0.3s ease;
+/* ── Social Cards ── */
+.contact-content {
+  width: 100%;
+  max-width: 1000px;
+  position: relative;
+  z-index: 1;
 }
 
-.icon-box:hover i {
-    color: var(--primary-color);
-    transform: rotate(10deg) scale(1.4);
-    filter: drop-shadow(0 0 10px var(--border-color));
+.social-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.social-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  text-decoration: none;
+  overflow: hidden;
+  transition: all 0.4s var(--ease-spring);
+  box-shadow: var(--shadow-sm);
+}
+
+.card-bg {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 0;
+}
+
+.github-card .card-bg { background: radial-gradient(circle at center, rgba(255, 255, 255, 0.1) 0%, transparent 70%); }
+.linkedin-card .card-bg { background: radial-gradient(circle at center, rgba(10, 102, 194, 0.2) 0%, transparent 70%); }
+.email-card .card-bg { background: radial-gradient(circle at center, rgba(234, 67, 53, 0.2) 0%, transparent 70%); }
+
+.card-content-inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+}
+
+.social-icon {
+  font-size: 3rem;
+  color: var(--color-text-secondary);
+  transition: all 0.4s var(--ease-spring);
+}
+
+.social-name {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  transition: color 0.3s ease;
+}
+
+.social-action {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-text-tertiary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.4s var(--ease-out-expo);
+}
+
+.social-action i {
+  transition: transform 0.3s ease;
+}
+
+/* Hover States */
+.social-card:hover {
+  transform: translateY(-10px);
+  border-color: var(--color-accent);
+}
+
+.github-card:hover { border-color: #ffffff; box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1); }
+.linkedin-card:hover { border-color: #0a66c2; box-shadow: 0 10px 30px rgba(10, 102, 194, 0.2); }
+.email-card:hover { border-color: #ea4335; box-shadow: 0 10px 30px rgba(234, 67, 53, 0.2); }
+
+.social-card:hover .card-bg {
+  opacity: 1;
+}
+
+.github-card:hover .social-icon { color: #ffffff; transform: scale(1.1); }
+.linkedin-card:hover .social-icon { color: #0a66c2; transform: scale(1.1); }
+.email-card:hover .social-icon { color: #ea4335; transform: scale(1.1); }
+
+.social-card:hover .social-action {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.github-card:hover .social-action { color: #ffffff; }
+.linkedin-card:hover .social-action { color: #0a66c2; }
+.email-card:hover .social-action { color: #ea4335; }
+
+.social-card:hover .social-action i {
+  transform: translateX(5px);
 }

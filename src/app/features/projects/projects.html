@@ -1,110 +1,120 @@
-<main>
-    <div class="projects">
-        <div class="title">
-            <h1>{{ ts.t().PROJECTS_TITLE }}</h1>
-        </div>
-        <div class="projects-grid">
-
-            <mat-card class="project-card">
-                <div class="card-header">
-                    <mat-card-title>Comp-Script</mat-card-title>
-                    <div class="tech-tags">
-                        <span class="tag">
-                            <i class="fab fa-java"></i> Java
-                        </span>
-                        <span class="tag">
-                            <i class="fas fa-circle-check"></i> JFlex
-                        </span>
-                        <span class="tag">
-                            <i class="fas fa-circle-check"></i> JCup
-                        </span>
-                        <span class="tag">
-                            <i class="fas fa-circle-check"></i> Swing
-                        </span>
-                    </div>
-                </div>
-                <mat-card-content>
-                    <p>{{ ts.t().PROJECT_COMP_DESC }}</p>
-                </mat-card-content>
-                <img mat-card-image src="assets/img/comp-script.png" alt="Project 1">
-                <div class="github-btn-wrapper" style="display: flex; gap: 10px;">
-                  <a class="github-btn" href="https://github.com/EDK367/CompScript" target="_blank" rel="noopener">
-                      <i class="fab fa-github"></i> {{ ts.t().GITHUB_BTN }}
-                  </a>
-                  <a class="github-btn details-btn" [routerLink]="['/project', 'comp-script']" style="color: var(--accent-color); border-color: var(--accent-color); box-shadow: 0 0 8px var(--accent-color);">
-                      <i class="fas fa-info-circle"></i> {{ ts.t().DETAILS_BTN }}
-                  </a>
-                </div>
-            </mat-card>
-
-
-            <mat-card class="project-card">
-                <div class="card-header">
-                    <mat-card-title>Campus League</mat-card-title>
-                    <div class="tech-tags">
-                        <span class="tag">
-                            <i class="fab fa-java"></i> Java
-                        </span>
-                        <span class="tag">
-                            <i class="fab fa-envira"></i> SpringBoot
-                        </span>
-                        <span class="tag">
-                            <i class="fas fa-database"></i> MySQL
-                        </span>
-                        <span class="tag">
-                            <i class="fab fa-angular"></i> Angular
-                        </span>
-                    </div>
-                </div>
-                <mat-card-content>
-                    <p>{{ ts.t().PROJECT_CAMPUS_DESC }}</p>
-                </mat-card-content>
-                <img mat-card-image src="assets/img/logo-campus-league.png" alt="Project 1">
-                <div class="github-btn-wrapper" style="display: flex; gap: 10px;">
-                  <a class="github-btn" href="https://github.com/EDK367/Campus_League" target="_blank" rel="noopener">
-                      <i class="fab fa-github"></i> {{ ts.t().GITHUB_BTN }}
-                  </a>
-                  <a class="github-btn details-btn" [routerLink]="['/project', 'campus-league']" style="color: var(--accent-color); border-color: var(--accent-color); box-shadow: 0 0 8px var(--accent-color);">
-                      <i class="fas fa-info-circle"></i> {{ ts.t().DETAILS_BTN }}
-                  </a>
-                </div>
-
-            </mat-card>
-
-
-            <mat-card class="project-card">
-                <div class="card-header">
-                    <mat-card-title>Vigilant Eye</mat-card-title>
-                    <div class="tech-tags">
-                        <span class="tag">
-                            <i class="fab fa-python"></i> Python
-                        </span>
-                        <span class="tag">
-                            <i class="fas fa-circle-check"></i> Kivy
-                        </span>
-                        <span class="tag">
-                            <i class="fas fa-circle-check"></i> Mediapipe
-                        </span>
-                    </div>
-                </div>
-                <mat-card-content>
-                    <p>{{ ts.t().PROJECT_OJO_DESC }}</p>
-                </mat-card-content>
-                <img mat-card-image src="assets/img/ojo-vigilante.png" alt="Project 1">
-                <div class="github-btn-wrapper" style="display: flex; gap: 10px;">
-                  <a class="github-btn" href="https://github.com/EDK367/Ojo_Vigilante" target="_blank" rel="noopener">
-                      <i class="fab fa-github"></i> {{ ts.t().GITHUB_BTN }}
-                  </a>
-                  <a class="github-btn details-btn" [routerLink]="['/project', 'vigilant-eye']" style="color: var(--accent-color); border-color: var(--accent-color); box-shadow: 0 0 8px var(--accent-color);">
-                      <i class="fas fa-info-circle"></i> {{ ts.t().DETAILS_BTN }}
-                  </a>
-                </div>
-            </mat-card>
-        </div>
-        <div class="more-projects-section">
-            <a [routerLink]="['/more-projects']" style="text-decoration: none;">
-                <app-more-button [text]="ts.t().MORE_PROJECTS_BTN"></app-more-button>
-            </a>
-        </div>
+<div class="projects-container reveal">
+  <div class="projects-header reveal-scale">
+    <div class="section-badge">
+      <span class="badge-dot"></span>
+      <span class="badge-text">03 // Work</span>
     </div>
-</main>
+    <h2 class="section-title">
+      <span class="gradient-text">{{ ts.t().PROJECTS_TITLE }}</span>
+    </h2>
+  </div>
+
+  <div class="projects-grid">
+    <!-- Project 1 -->
+    <div class="project-card-wrapper reveal-scale" #projectCard>
+      <div class="project-card">
+        <div class="card-glow"></div>
+        <div class="card-image-container">
+          <img src="assets/img/comp-script.png" alt="Comp-Script" class="project-image">
+          <div class="image-overlay"></div>
+        </div>
+        
+        <div class="card-content">
+          <div class="tech-tags">
+            <span class="tech-tag"><i class="fab fa-java"></i> Java</span>
+            <span class="tech-tag"><i class="fas fa-circle-check"></i> JFlex/JCup</span>
+            <span class="tech-tag"><i class="fas fa-desktop"></i> Swing</span>
+          </div>
+          
+          <h3 class="project-title">Comp-Script</h3>
+          <p class="project-desc">{{ ts.t().PROJECT_COMP_DESC }}</p>
+          
+          <div class="project-actions">
+            <a href="https://github.com/EDK367/CompScript" target="_blank" rel="noopener" class="action-btn action-github" data-cursor="View Source">
+              <i class="fab fa-github"></i>
+            </a>
+            <a [routerLink]="['/project', 'comp-script']" class="action-btn action-details" data-cursor="View Details">
+              <span>{{ ts.t().DETAILS_BTN }}</span>
+              <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 2 -->
+    <div class="project-card-wrapper reveal-scale" #projectCard style="transition-delay: 0.1s;">
+      <div class="project-card">
+        <div class="card-glow"></div>
+        <div class="card-image-container">
+          <img src="assets/img/logo-campus-league.png" alt="Campus League" class="project-image">
+          <div class="image-overlay"></div>
+        </div>
+        
+        <div class="card-content">
+          <div class="tech-tags">
+            <span class="tech-tag"><i class="fab fa-java"></i> Java</span>
+            <span class="tech-tag"><i class="fab fa-envira"></i> SpringBoot</span>
+            <span class="tech-tag"><i class="fab fa-angular"></i> Angular</span>
+            <span class="tech-tag"><i class="fas fa-database"></i> MySQL</span>
+          </div>
+          
+          <h3 class="project-title">Campus League</h3>
+          <p class="project-desc">{{ ts.t().PROJECT_CAMPUS_DESC }}</p>
+          
+          <div class="project-actions">
+            <a href="https://github.com/EDK367/Campus_League" target="_blank" rel="noopener" class="action-btn action-github" data-cursor="View Source">
+              <i class="fab fa-github"></i>
+            </a>
+            <a [routerLink]="['/project', 'campus-league']" class="action-btn action-details" data-cursor="View Details">
+              <span>{{ ts.t().DETAILS_BTN }}</span>
+              <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 3 -->
+    <div class="project-card-wrapper reveal-scale" #projectCard style="transition-delay: 0.2s;">
+      <div class="project-card">
+        <div class="card-glow"></div>
+        <div class="card-image-container">
+          <img src="assets/img/ojo-vigilante.png" alt="Vigilant Eye" class="project-image">
+          <div class="image-overlay"></div>
+        </div>
+        
+        <div class="card-content">
+          <div class="tech-tags">
+            <span class="tech-tag"><i class="fab fa-python"></i> Python</span>
+            <span class="tech-tag"><i class="fas fa-mobile-alt"></i> Kivy</span>
+            <span class="tech-tag"><i class="fas fa-eye"></i> Mediapipe</span>
+          </div>
+          
+          <h3 class="project-title">Vigilant Eye</h3>
+          <p class="project-desc">{{ ts.t().PROJECT_OJO_DESC }}</p>
+          
+          <div class="project-actions">
+            <a href="https://github.com/EDK367/Ojo_Vigilante" target="_blank" rel="noopener" class="action-btn action-github" data-cursor="View Source">
+              <i class="fab fa-github"></i>
+            </a>
+            <a [routerLink]="['/project', 'vigilant-eye']" class="action-btn action-details" data-cursor="View Details">
+              <span>{{ ts.t().DETAILS_BTN }}</span>
+              <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="projects-more reveal">
+    <a routerLink="/more-projects" class="premium-button premium-button-secondary" data-cursor="Explore All">
+      <span class="button-content">
+        {{ ts.t().MORE_PROJECTS_BTN }}
+        <i class="fas fa-arrow-right"></i>
+      </span>
+      <span class="button-glare"></span>
+    </a>
+  </div>
+</div>

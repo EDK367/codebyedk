@@ -1,0 +1,31 @@
+@if (!isHidden) {
+  <div class="cursor-wrapper">
+    <!-- Inner dot -->
+    <div
+      class="cursor-dot"
+      [class.hovering]="isHovering"
+      [class.clicking]="isClicking"
+      [style.left.px]="cursorX"
+      [style.top.px]="cursorY">
+    </div>
+
+    <!-- Outer ring -->
+    <div
+      class="cursor-ring"
+      [class.hovering]="isHovering"
+      [class.clicking]="isClicking"
+      [style.left.px]="ringX"
+      [style.top.px]="ringY">
+    </div>
+
+    <!-- Label -->
+    @if (cursorLabel) {
+      <div
+        class="cursor-label"
+        [style.left.px]="ringX + 28"
+        [style.top.px]="ringY - 10">
+        {{ cursorLabel }}
+      </div>
+    }
+  </div>
+}

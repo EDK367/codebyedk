@@ -2,27 +2,77 @@
   <nav>
     <app-nav></app-nav>
   </nav>
-  <div class="container">
-    <section id="about" class="about">
+
+  <!-- ═══ HERO SECTION ═══ -->
+  <section class="hero" #heroSection [class.loaded]="heroLoaded">
+    <canvas #heroCanvas class="hero-canvas"></canvas>
+
+    <!-- Floating decorative elements -->
+    <div class="hero-float hero-float-1"></div>
+    <div class="hero-float hero-float-2"></div>
+    <div class="hero-float hero-float-3"></div>
+
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        <span class="badge-text">{{ ts.t().ABOUT_TITLE }}</span>
+      </div>
+      <h1 class="hero-title">
+        <span class="hero-title-line hero-title-line-1">{{ ts.t().ABOUT_GREETING }}</span>
+      </h1>
+      <p class="hero-subtitle">{{ ts.t().NAV_NAME }}</p>
+      <div class="hero-cta">
+        <a href="#projects" class="hero-btn hero-btn-primary" data-cursor="View Projects">
+          <span>{{ ts.t().NAV_PROJECTS }}</span>
+          <i class="fas fa-arrow-right"></i>
+        </a>
+        <a href="#contact" class="hero-btn hero-btn-secondary" data-cursor="Contact">
+          <span>{{ ts.t().NAV_CONTACT }}</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Scroll Indicator -->
+    <div class="scroll-indicator">
+      <div class="scroll-line"></div>
+      <span class="scroll-text">Scroll</span>
+    </div>
+  </section>
+
+  <!-- ═══ MAIN CONTENT ═══ -->
+  <div class="content-wrapper">
+    <section id="about" class="section-block">
       <app-about></app-about>
     </section>
 
-    <section id="technologies" class="technologies">
+    <section id="technologies" class="section-block">
       <app-technologies></app-technologies>
     </section>
 
-    <section id="projects" class="projects">
+    <section id="projects" class="section-block">
       <app-projects></app-projects>
     </section>
 
-
-    <section id="contact" class="contact">
+    <section id="contact" class="section-block">
       <app-contact></app-contact>
     </section>
-
   </div>
 
-  <footer class="footer-info">
-    <p>{{ ts.t().HOME_FOOTER }}</p>
+  <!-- ═══ FOOTER ═══ -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <span class="footer-logo">&lt;/&gt; EDK367</span>
+      </div>
+      <div class="footer-center">
+        <p class="footer-copy">{{ ts.t().HOME_FOOTER }}</p>
+      </div>
+      <div class="footer-right">
+        <span class="footer-status">
+          <span class="status-dot"></span>
+          Available for work
+        </span>
+      </div>
+    </div>
   </footer>
 </main>

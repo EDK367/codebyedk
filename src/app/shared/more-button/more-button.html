@@ -1,3 +1,7 @@
-<button [type]="type" [disabled]="disabled" class="more-btn">
+<button [type]="type" [disabled]="disabled" class="premium-button premium-button-primary">
+  <span class="button-content">
     {{ text }}
+    <i *ngIf="icon" [class]="icon"></i>
+  </span>
+  <span class="button-glare"></span>
 </button>

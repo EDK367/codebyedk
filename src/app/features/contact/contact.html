@@ -1,19 +1,47 @@
-<main>
-    <div class="contact">
-        <div class="title">
-            <h1>{{ ts.t().CONTACT_TITLE }}</h1>
-        </div>
-        <div class="contact-links">
-            <a href="https://github.com/EDK367" target="_blank" class="icon-box">
-                <i class="fab fa-github"></i>
-            </a>
-            <a href="mailto:denilmonterroso22@gmail.com" target="_blank" class="icon-box">
-                <i class="fas fa-envelope"></i>
-            </a>
-            <a href="https://www.linkedin.com/in/erikson-denilson-orozco-monterroso-498084324" target="_blank"
-                class="icon-box">
-                <i class="fab fa-linkedin"></i>
-            </a>
-        </div>
+<div class="contact-container reveal" #contactContainer>
+  <div class="ambient-glow"></div>
+  
+  <div class="contact-header reveal-scale">
+    <div class="section-badge">
+      <span class="badge-dot"></span>
+      <span class="badge-text">04 // Connect</span>
     </div>
-</main>
+    <h2 class="section-title">
+      <span class="gradient-text">{{ ts.t().CONTACT_TITLE }}</span>
+    </h2>
+  </div>
+
+  <div class="contact-content">
+    <div class="social-grid">
+      <!-- GitHub -->
+      <a href="https://github.com/EDK367" target="_blank" rel="noopener" class="social-card github-card reveal-left" data-cursor="Open GitHub">
+        <div class="card-bg"></div>
+        <div class="card-content-inner">
+          <i class="fab fa-github social-icon"></i>
+          <span class="social-name">GitHub</span>
+          <span class="social-action">Explore Code <i class="fas fa-arrow-right"></i></span>
+        </div>
+      </a>
+
+      <!-- LinkedIn -->
+      <a href="https://www.linkedin.com/in/erikson-denilson-orozco-monterroso-498084324" target="_blank" rel="noopener" class="social-card linkedin-card reveal-scale" data-cursor="Open LinkedIn">
+        <div class="card-bg"></div>
+        <div class="card-content-inner">
+          <i class="fab fa-linkedin social-icon"></i>
+          <span class="social-name">LinkedIn</span>
+          <span class="social-action">Connect <i class="fas fa-arrow-right"></i></span>
+        </div>
+      </a>
+
+      <!-- Email -->
+      <a href="mailto:denilmonterroso22@gmail.com" target="_blank" rel="noopener" class="social-card email-card reveal-right" data-cursor="Send Email">
+        <div class="card-bg"></div>
+        <div class="card-content-inner">
+          <i class="fas fa-envelope social-icon"></i>
+          <span class="social-name">Email</span>
+          <span class="social-action">Say Hello <i class="fas fa-arrow-right"></i></span>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>

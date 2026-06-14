@@ -1,15 +1,92 @@
-<main>
-    <nav>
-        <div class="nav-left">
-            <h1 class="name" style="cursor: pointer" [routerLink]="['/']">{{ ts.t().NAV_NAME }}</h1>
-        </div>
-        <div class="nav-right" style="display: flex; align-items: center; gap: 1rem;">
-            <a href="#about">{{ ts.t().NAV_ABOUT }}</a>
-            <a href="#technologies">{{ ts.t().NAV_TECHNOLOGIES }}</a>
-            <a href="#projects">{{ ts.t().NAV_PROJECTS }}</a>
-            <a href="#contact">{{ ts.t().NAV_CONTACT }}</a>
-            <a href="assets/doc/CVErikson.pdf" target="_blank">{{ ts.t().NAV_CV }}</a>
-            <app-more-button [text]="ts.currentLanguage() === 'en' ? 'ES | EN' : 'EN | ES'" (click)="ts.toggleLanguage()"></app-more-button>
-        </div>
+<header class="nav-header" [class.scrolled]="isScrolled">
+  <nav class="nav-inner">
+    <!-- Logo -->
+    <a class="nav-logo" [routerLink]="['/']" data-cursor="Home">
+      <span class="logo-symbol">&lt;/&gt;</span>
+      <span class="logo-text">EDK367</span>
+    </a>
+
+    <!-- Desktop Links -->
+    <div class="nav-links">
+      <a href="#about" class="nav-link" [class.active]="activeSection === 'about'" data-cursor="Discover">
+        {{ ts.t().NAV_ABOUT }}
+      </a>
+      <a href="#technologies" class="nav-link" [class.active]="activeSection === 'technologies'" data-cursor="Explore">
+        {{ ts.t().NAV_TECHNOLOGIES }}
+      </a>
+      <a href="#projects" class="nav-link" [class.active]="activeSection === 'projects'" data-cursor="View Projects">
+        {{ ts.t().NAV_PROJECTS }}
+      </a>
+      <a href="#contact" class="nav-link" [class.active]="activeSection === 'contact'" data-cursor="Contact">
+        {{ ts.t().NAV_CONTACT }}
+      </a>
+      <a href="assets/doc/CVErikson.pdf" target="_blank" class="nav-link nav-link-cv" data-cursor="Download">
+        {{ ts.t().NAV_CV }}
+      </a>
+    </div>
+
+    <!-- Controls -->
+    <div class="nav-controls">
+      <!-- Language Toggle -->
+      <button class="control-btn lang-toggle" (click)="ts.toggleLanguage()" data-cursor="Switch Language"
+        aria-label="Toggle Language">
+        <span class="lang-label">{{ ts.currentLanguage() === 'en' ? 'EN' : 'ES' }}</span>
+      </button>
+
+
+      <!-- Theme Toggle 
+      <button class="control-btn theme-toggle" (click)="toggleTheme()" data-cursor="Toggle Theme" aria-label="Toggle Theme">
+        <i class="fas" [class.fa-moon]="isDarkTheme" [class.fa-sun]="!isDarkTheme"></i>
+      </button>
+      -->
+
+      <!-- Mobile Hamburger -->
+      <button class="hamburger" [class.active]="mobileMenuOpen" (click)="toggleMobileMenu()" aria-label="Toggle Menu">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<!-- Mobile Overlay Menu -->
+<div class="mobile-overlay" [class.open]="mobileMenuOpen" (click)="closeMobileMenu()">
+  <div class="mobile-menu" (click)="$event.stopPropagation()">
+    <div class="mobile-menu-header">
+      <span class="logo-symbol">&lt;/&gt;</span>
+      <span class="logo-text">EDK</span>
+    </div>
+    <nav class="mobile-nav-links">
+      <a href="#about" class="mobile-link" (click)="closeMobileMenu()">
+        <span class="mobile-link-number">01</span>
+        <span>{{ ts.t().NAV_ABOUT }}</span>
+      </a>
+      <a href="#technologies" class="mobile-link" (click)="closeMobileMenu()">
+        <span class="mobile-link-number">02</span>
+        <span>{{ ts.t().NAV_TECHNOLOGIES }}</span>
+      </a>
+      <a href="#projects" class="mobile-link" (click)="closeMobileMenu()">
+        <span class="mobile-link-number">03</span>
+        <span>{{ ts.t().NAV_PROJECTS }}</span>
+      </a>
+      <a href="#contact" class="mobile-link" (click)="closeMobileMenu()">
+        <span class="mobile-link-number">04</span>
+        <span>{{ ts.t().NAV_CONTACT }}</span>
+      </a>
+      <a href="assets/doc/CVErikson.pdf" target="_blank" class="mobile-link" (click)="closeMobileMenu()">
+        <span class="mobile-link-number">05</span>
+        <span>{{ ts.t().NAV_CV }}</span>
+      </a>
     </nav>
-</main>
+    <div class="mobile-menu-footer">
+      <button class="control-btn" (click)="ts.toggleLanguage()">
+        {{ ts.currentLanguage() === 'en' ? 'EN → ES' : 'ES → EN' }}
+      </button>
+      <button class="control-btn" (click)="toggleTheme()">
+        <i class="fas" [class.fa-moon]="isDarkTheme" [class.fa-sun]="!isDarkTheme"></i>
+        {{ isDarkTheme ? 'Dark' : 'Light' }}
+      </button>
+    </div>
+  </div>
+</div>

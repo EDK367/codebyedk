@@ -1,14 +1,16 @@
-import { Component } from '@angular/core';
-import { Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-more-button',
-  imports: [],
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './more-button.html',
-  styleUrl: './more-button.css'
+  styleUrls: ['./more-button.css']
 })
 export class MoreButton {
   @Input() text: string = 'Click';
   @Input() type: string = 'button';
   @Input() disabled: boolean = false;
+  @Input() icon: string = '';
 }
