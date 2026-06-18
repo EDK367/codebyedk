@@ -75,4 +75,27 @@ export class Nav implements OnInit, OnDestroy {
   ngOnDestroy() {
     if (this.scrollListener) this.scrollListener();
   }
+
+  downloadCV(): void {
+    const file =
+      this.ts.currentLanguage() === 'en'
+        ? 'assets/doc/CVErikson_Orozco_EN.pdf'
+        : 'assets/doc/CVErikson_Orozco_ES.pdf';
+
+    const filename =
+      this.ts.currentLanguage() === 'en'
+        ? 'CVErikson_Orozco_EN.pdf'
+        : 'CVErikson_Orozco_ES.pdf';
+
+    const link = document.createElement('a');
+
+    link.href = file;
+    link.download = filename;
+
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+
+    this.closeMobileMenu();
+  }
 }

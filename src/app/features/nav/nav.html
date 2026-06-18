@@ -20,7 +20,11 @@
       <a href="#contact" class="nav-link" [class.active]="activeSection === 'contact'" data-cursor="Contact">
         {{ ts.t().NAV_CONTACT }}
       </a>
-      <a href="assets/doc/CVErikson.pdf" target="_blank" class="nav-link nav-link-cv" data-cursor="Download">
+      <a [href]="ts.currentLanguage() === 'en'
+    ? 'assets/doc/CVErikson_Orozco_EN.pdf'
+    : 'assets/doc/CVErikson_Orozco_ES.pdf'" [attr.download]="ts.currentLanguage() === 'en'
+    ? 'CVErikson_Orozco_EN.pdf'
+    : 'CVErikson_Orozco_ES.pdf'" class="nav-link nav-link-cv" data-cursor="Download">
         {{ ts.t().NAV_CV }}
       </a>
     </div>
@@ -74,7 +78,7 @@
         <span class="mobile-link-number">04</span>
         <span>{{ ts.t().NAV_CONTACT }}</span>
       </a>
-      <a href="assets/doc/CVErikson.pdf" target="_blank" class="mobile-link" (click)="closeMobileMenu()">
+      <a href="javascript:void(0)" class="mobile-link" (click)="downloadCV()">
         <span class="mobile-link-number">05</span>
         <span>{{ ts.t().NAV_CV }}</span>
       </a>

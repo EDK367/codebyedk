@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CV - Erikson Denilson Orozco Monterroso</title>
+  <!-- Incluir FontAwesome para los iconos -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+      background: #e6e9ef;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 30px 20px;
+      min-height: 100vh;
+    }
+
+    .controls {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 25px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .controls button {
+      padding: 10px 24px;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .controls button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .btn-es {
+      background: #2c3e50;
+      color: white;
+    }
+
+    .btn-en {
+      background: #2980b9;
+      color: white;
+    }
+
+    .btn-pdf {
+      background: #27ae60;
+      color: white;
+    }
+
+    .cv-wrapper {
+      background: white;
+      width: 210mm;
+      /* A4 width */
+      min-height: 297mm;
+      /* A4 height */
+      border-radius: 4px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ===== HEADER MATCHING IMAGE ===== */
+    .cv-header {
+      background-color: #323a45;
+      /* Dark slate blue/grey */
+      color: white;
+      padding: 35px 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .cv-header h1 {
+      font-size: 26px;
+      font-weight: 400;
+      color: white;
+      line-height: 1.1;
+      letter-spacing: 0.5px;
+      margin-bottom: 2px;
+    }
+
+    .cv-header .subtitle {
+      font-size: 14px;
+      font-weight: 300;
+      color: #cbd5e1;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .cv-header .subtitle i {
+      font-size: 12px;
+    }
+
+    .contact-info-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      font-size: 12px;
+      color: #cbd5e1;
+      margin-top: 5px;
+    }
+
+    .contact-info-row span {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* ===== CUERPO DEL CV ===== */
+    .cv-body {
+      display: grid;
+      grid-template-columns: 60% 40%;
+      flex-grow: 1;
+    }
+
+    .col-left {
+      padding: 20px 30px;
+    }
+
+    .col-right {
+      padding: 20px 30px 20px 20px;
+      border-left: 1px solid #e5e7eb;
+    }
+
+    @media (max-width: 750px) {
+      .cv-wrapper {
+        width: 100%;
+        min-height: auto;
+      }
+
+      .cv-body {
+        grid-template-columns: 1fr;
+      }
+
+      .col-right {
+        border-left: none;
+        border-top: 1px solid #e5e7eb;
+        padding: 30px 40px;
+      }
+    }
+
+    /* Secciones */
+    .section {
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: #374151;
+      border-bottom: 1px solid #e5e7eb;
+      padding-bottom: 8px;
+      margin-bottom: 10px;
+    }
+
+    .section-content {
+      font-size: 12.5px;
+      color: #4b5563;
+      line-height: 1.4;
+    }
+
+    /* Experiencia y Proyectos */
+    .item-block {
+      margin-bottom: 20px;
+    }
+
+    .item-title {
+      font-weight: 600;
+      font-size: 13.5px;
+      color: #1f2937;
+      margin-bottom: 2px;
+    }
+
+    .item-title .period {
+      font-weight: 400;
+    }
+
+    .item-subtitle {
+      font-weight: 600;
+      font-size: 12.5px;
+      color: #374151;
+      display: flex;
+      align-items: flex-start;
+    }
+
+    .item-subtitle::before {
+      content: "•";
+      margin-right: 5px;
+      font-weight: bold;
+      color: #374151;
+    }
+
+    .item-desc {
+      margin-top: 1px;
+      color: #6b7280;
+    }
+
+    /* Información (Sidebar) */
+    .info-block {
+      margin-bottom: 10px;
+    }
+
+    .info-title {
+      font-weight: 600;
+      font-size: 12.5px;
+      color: #1f2937;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 1px;
+    }
+
+    .info-value {
+      color: #4b5563;
+      text-decoration: none;
+      font-size: 12px;
+      word-break: break-all;
+    }
+
+    /* Competencias (Barras) */
+    .skill-block {
+      margin-bottom: 15px;
+    }
+
+    .skill-name {
+      font-size: 12px;
+      color: #374151;
+      margin-bottom: 3px;
+    }
+
+    .skill-bar-bg {
+      background-color: #f3f4f6;
+      height: 4px;
+      width: 100%;
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .skill-bar-fill {
+      background-color: #28456e;
+      height: 100%;
+    }
+
+    /* Certificados */
+    .cert-source {
+      font-weight: 600;
+      color: #1f2937;
+      margin-top: 6px;
+      margin-bottom: 2px;
+    }
+
+    /* Footer (consentimiento) */
+    .cv-footer {
+      margin-top: 15px;
+      font-size: 10px;
+      color: #9ca3af;
+    }
+
+    /* Ocultar idiomas */
+    .lang-en {
+      display: none;
+    }
+
+    .lang-es {
+      display: block;
+    }
+
+    body.show-en .lang-es {
+      display: none;
+    }
+
+    body.show-en .lang-en {
+      display: block;
+    }
+
+    /* Impresión */
+    @media print {
+      body {
+        background: white;
+        padding: 0;
+      }
+
+      .controls {
+        display: none !important;
+      }
+
+      .cv-wrapper {
+        box-shadow: none;
+        border-radius: 0;
+        width: 100%;
+        min-height: 100vh;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="controls">
+    <button class="btn-es" onclick="setLang('es')">Español</button>
+    <button class="btn-en" onclick="setLang('en')">English</button>
+    <button class="btn-pdf" onclick="downloadPDF()">Descargar PDF</button>
+  </div>
+
+  <!-- Contenedor que será exportado a PDF -->
+  <div class="cv-wrapper" id="cv-content">
+
+    <!-- ==================== VERSIÓN ESPAÑOL ==================== -->
+    <div class="lang-es">
+
+      <!-- HEADER -->
+      <div class="cv-header">
+        <h1>Erikson Denilson Orozco Monterroso</h1>
+        <div class="subtitle">Full Stack Developer &lt;/&gt;</div>
+        <div class="contact-info-row">
+          <span><i class="fas fa-envelope"></i> denilmonterroso22@gmail.com</span>
+          <span><i class="fas fa-phone"></i> +502 37044884</span>
+          <span><i class="fas fa-map-marker-alt"></i> Quetzaltenango, Guatemala</span>
+        </div>
+      </div>
+
+      <div class="cv-body">
+
+        <!-- COLUMNA IZQUIERDA -->
+        <div class="col-left">
+
+          <!-- ¿Quien Soy? -->
+          <div class="section">
+            <div class="section-title">¿Quien Soy?</div>
+            <div class="section-content">
+              Soy Estudiante de Ingeniería en Ciencias y Sistemas con experiencia en desarrollo de software y proyectos
+              técnicos en diversas tecnologías como Java, Python, Angular, Spring Boot, y Go. Apasionado por la mejora
+              continua y la aplicación práctica de conocimientos en proyectos reales.
+            </div>
+          </div>
+
+          <!-- Experiencia -->
+          <div class="section">
+            <div class="section-title">Experiencia</div>
+            <div class="section-content">
+              <div class="item-block">
+                <div class="item-title">Freelancer <span class="period">(6 meses)</span></div>
+
+                <div style="margin-top: 8px;">
+                  <div class="item-subtitle">Página Web para Abogados</div>
+                  <div class="item-desc">Diseño e implementación de una plataforma profesional para un despacho
+                    jurídico, enfocada en la presentación de servicios legales y presencia digital.</div>
+                </div>
+
+                <div style="margin-top: 12px;">
+                  <div class="item-subtitle">Sistema de Gestión de Bodega</div>
+                  <div class="item-desc">Desarrollo de un sistema/aplicación integral para el control de inventarios,
+                    entradas y salidas de mercancía, optimizando la logística del almacén.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Proyectos Universitarios -->
+          <div class="section">
+            <div class="section-title">Proyectos Universitarios</div>
+            <div class="section-content">
+              <div class="item-block">
+                <div class="item-subtitle">Compilador Personalizado – Lenguaje Simple (Java + JFlex + CUP)</div>
+                <div class="item-desc">Desarrollo de un compilador básico para un lenguaje similar a JavaScript.
+                  Análisis léxico, sintáctico y semántico, generación de código intermedio y manejo de tablas de
+                  símbolos.</div>
+              </div>
+              <div class="item-block">
+                <div class="item-subtitle">Plataforma de Torneos Deportivos (Angular + Spring Boot + MySQL)</div>
+                <div class="item-desc">Gestión de torneos, jugadores y equipos con generación de partidos "todos contra
+                  todos" y relaciones complejas entre entidades.</div>
+              </div>
+              <div class="item-block">
+                <div class="item-subtitle">Ojo Vigilante (Python, Kivy, OpenCV, MediaPipe)</div>
+                <div class="item-desc">Prevención de accidentes por fatiga al volante mediante MediaPipe Face Mesh y
+                  cálculo de EAR para alertas de somnolencia.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Certificados -->
+          <div class="section">
+            <div class="section-title">Certificados</div>
+            <div class="section-content">
+              <div class="cert-source">Udemy</div>
+              <div class="item-subtitle">MySQL</div>
+              <div class="item-subtitle">Angular</div>
+
+              <div class="cert-source">CodigoFacilito</div>
+              <div class="item-subtitle">Go</div>
+              <div class="item-subtitle">Spring Boot</div>
+              <div class="item-subtitle">Docker</div>
+            </div>
+          </div>
+
+          <!-- Footer -->
+          <div class="cv-footer">
+            Doy mi consentimiento para el procesamiento de mis datos personales para el proceso de selección del puesto
+            que solicito.
+          </div>
+
+        </div>
+
+        <!-- COLUMNA DERECHA -->
+        <div class="col-right">
+
+          <!-- Información -->
+          <div class="section">
+            <div class="section-title">Información</div>
+            <div class="section-content">
+              <div class="info-block">
+                <div class="info-title"><i class="fas fa-globe"></i> Sitio web</div>
+                <a href="https://www.solairy.app/" target="_blank" class="info-value">solairy.app</a>
+              </div>
+              <div class="info-block">
+                <div class="info-title"><i class="fab fa-linkedin"></i> LinkedIn</div>
+                <a href="https://linkedin.com/in/erikson-denilson-orozco-monterroso-498084324" target="_blank"
+                  class="info-value">erikson-denilson-orozco-monterroso-498084324</a>
+              </div>
+              <div class="info-block">
+                <div class="info-title"><i class="fab fa-github"></i> GitHub</div>
+                <a href="https://github.com/EDK367" target="_blank" class="info-value">github.com/EDK367</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Competencias -->
+          <div class="section">
+            <div class="section-title">Competencias</div>
+            <div class="section-content">
+              <div class="skill-block">
+                <div class="skill-name">Desarrollo backend</div>
+                <div class="skill-bar-bg">
+                  <div class="skill-bar-fill" style="width: 90%;"></div>
+                </div>
+              </div>
+              <div class="skill-block">
+                <div class="skill-name">Desarrollo frontend</div>
+                <div class="skill-bar-bg">
+                  <div class="skill-bar-fill" style="width: 80%;"></div>
+                </div>
+              </div>
+              <div class="skill-block">
+                <div class="skill-name">Base de Datos Relacionales</div>
+                <div class="skill-bar-bg">
+                  <div class="skill-bar-fill" style="width: 85%;"></div>
+                </div>
+              </div>
+              <div class="skill-block">
+                <div class="skill-name">Java</div>
+                <div class="skill-bar-bg">
+                  <div class="skill-bar-fill" style="width: 90%;"></div>
+                </div>
+              </div>
+              <div class="skill-block">
+                <div class="skill-name">Spring Boot</div>
+                <div class="skill-bar-bg">
+                  <div class="skill-bar-fill" style="width: 85%;"></div>
+                </div>
+              </div>
+              <div class="skill-block">
+                <div class="skill-name">Go (Golang)</div>
+                <div class="skill-bar-bg">
+                  <div class="skill-bar-fill" style="width: 70%;"></div>
+                </div>
+              </div>
+              <div class="skill-block">
+                <div class="skill-name">Python</div>
+                <div class="skill-bar-bg">
+                  <div class="skill-bar-fill" style="width: 80%;"></div>
+                </div>
+              </div>
+              <div class="skill-block">
+                <div class="skill-name">Angular.js y Vue.js</div>
+                <div class="skill-bar-bg">
+                  <div class="skill-bar-fill" style="width: 75%;"></div>
+                </div>
+              </div>
+              <div class="skill-block">
+                <div class="skill-name">Git &amp; GitHub</div>
+                <div class="skill-bar-bg">
+                  <div class="skill-bar-fill" style="width: 90%;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Idiomas -->
+          <div class="section">
+            <div class="section-title">Idiomas</div>
+            <div class="section-content">
+              <div class="skill-block">
+                <div class="skill-name">Inglés</div>
+                <div class="skill-bar-bg">
+                  <div class="skill-bar-fill" style="width: 60%;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+    <!-- FIN ESPAÑOL -->
+
+    <!-- ==================== VERSIÓN INGLÉS ==================== -->
+    <div class="lang-en">
+
+      <!-- HEADER -->
+      <div class="cv-header">
+        <h1>Erikson Denilson Orozco Monterroso</h1>
+        <div class="subtitle">Full Stack Developer &lt;/&gt;</div>
+        <div class="contact-info-row">
+          <span><i class="fas fa-envelope"></i> denilmonterroso22@gmail.com</span>
+          <span><i class="fas fa-phone"></i> +502 37044884</span>
+          <span><i class="fas fa-map-marker-alt"></i> Quetzaltenango, Guatemala</span>
+        </div>
+      </div>
+
+      <div class="cv-body">
+
+        <!-- COLUMNA IZQUIERDA -->
+        <div class="col-left">
+
+          <!-- About -->
+          <div class="section">
+            <div class="section-title">About Me</div>
+            <div class="section-content">
+              I am a Systems Engineering student with experience in software development and technical projects using
+              various technologies such as Java, Python, Angular, Spring Boot, and Go. Passionate about continuous
+              improvement and the practical application of knowledge in real-world projects.
+            </div>
+          </div>
+
+          <!-- Experience -->
+          <div class="section">
+            <div class="section-title">Experience</div>
+            <div class="section-content">
+              <div class="item-block">
+                <div class="item-title">Freelancer <span class="period">(6 months)</span></div>
+
+                <div style="margin-top: 8px;">
+                  <div class="item-subtitle">Law Firm Website</div>
+                  <div class="item-desc">Design and implementation of a professional platform for a law firm, focused on
+                    presenting legal services and digital presence.</div>
+                </div>
+
+                <div style="margin-top: 12px;">
+                  <div class="item-subtitle">Warehouse Management System</div>
+                  <div class="item-desc">Development of a comprehensive system for inventory control, incoming and
+                    outgoing goods, optimizing warehouse logistics.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Projects -->
+          <div class="section">
+            <div class="section-title">University Projects</div>
+            <div class="section-content">
+              <div class="item-block">
+                <div class="item-subtitle">Custom Compiler – Simple Language (Java + JFlex + CUP)</div>
+                <div class="item-desc">Development of a basic compiler for a JavaScript-like language. Lexical,
+                  syntactic and semantic analysis, intermediate code generation and symbol table management.</div>
+              </div>
+              <div class="item-block">
+                <div class="item-subtitle">Sports Tournament Platform (Angular + Spring Boot + MySQL)</div>
+                <div class="item-desc">Tournament, player and team management with round-robin match generation and
+                  complex entity relationships.</div>
+              </div>
+              <div class="item-block">
+                <div class="item-subtitle">Ojo Vigilante (Python, Kivy, OpenCV, MediaPipe)</div>
+                <div class="item-desc">Fatigue accident prevention while driving using MediaPipe Face Mesh and EAR
+                  calculation for drowsiness alerts.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Certifications -->
+          <div class="section">
+            <div class="section-title">Certifications</div>
+            <div class="section-content">
+              <div class="cert-source">Udemy</div>
+              <div class="item-subtitle">MySQL</div>
+              <div class="item-subtitle">Angular</div>
+
+              <div class="cert-source">CodigoFacilito</div>
+              <div class="item-subtitle">Go</div>
+              <div class="item-subtitle">Spring Boot</div>
+              <div class="item-subtitle">Docker</div>
+            </div>
+          </div>
+
+          <!-- Footer -->
+          <div class="cv-footer">
+            I consent to the processing of my personal data for the selection process of the position I am applying for.
+          </div>
+
+        </div>
+
+        <!-- COLUMNA DERECHA -->
+        <div class="col-right">
+
+          <!-- Information -->
+          <div class="section">
+            <div class="section-title">Information</div>
+            <div class="section-content">
+              <div class="info-block">
+                <div class="info-title"><i class="fas fa-globe"></i> Website</div>
+                <a href="https://www.solairy.app/" target="_blank" class="info-value">solairy.app</a>
+              </div>
+              <div class="info-block">
+                <div class="info-title"><i class="fab fa-linkedin"></i> LinkedIn</div>
+                <a href="https://linkedin.com/in/erikson-denilson-orozco-monterroso-498084324" target="_blank"
+                  class="info-value">erikson-denilson-orozco-monterroso-498084324</a>
+              </div>
+              <div class="info-block">
+                <div class="info-title"><i class="fab fa-github"></i> GitHub</div>
+                <a href="https://github.com/EDK367" target="_blank" class="info-value">github.com/EDK367</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Skills -->
+          <div class="section">
+            <div class="section-title">Skills</div>
+            <div class="section-content">
+              <div class="skill-block">
+                <div class="skill-name">Backend Development</div>
+                <div class="skill-bar-bg">
+                  <div class="skill-bar-fill" style="width: 90%;"></div>
+                </div>
+              </div>
+              <div class="skill-block">
+                <div class="skill-name">Frontend Development</div>
+                <div class="skill-bar-bg">
+                  <div class="skill-bar-fill" style="width: 80%;"></div>
+                </div>
+              </div>
+              <div class="skill-block">
+                <div class="skill-name">Relational Databases</div>
+                <div class="skill-bar-bg">
+                  <div class="skill-bar-fill" style="width: 85%;"></div>
+                </div>
+              </div>
+              <div class="skill-block">
+                <div class="skill-name">Java</div>
+                <div class="skill-bar-bg">
+                  <div class="skill-bar-fill" style="width: 90%;"></div>
+                </div>
+              </div>
+              <div class="skill-block">
+                <div class="skill-name">Spring Boot</div>
+                <div class="skill-bar-bg">
+                  <div class="skill-bar-fill" style="width: 85%;"></div>
+                </div>
+              </div>
+              <div class="skill-block">
+                <div class="skill-name">Go (Golang)</div>
+                <div class="skill-bar-bg">
+                  <div class="skill-bar-fill" style="width: 70%;"></div>
+                </div>
+              </div>
+              <div class="skill-block">
+                <div class="skill-name">Python</div>
+                <div class="skill-bar-bg">
+                  <div class="skill-bar-fill" style="width: 80%;"></div>
+                </div>
+              </div>
+              <div class="skill-block">
+                <div class="skill-name">Angular.js &amp; Vue.js</div>
+                <div class="skill-bar-bg">
+                  <div class="skill-bar-fill" style="width: 75%;"></div>
+                </div>
+              </div>
+              <div class="skill-block">
+                <div class="skill-name">Git &amp; GitHub</div>
+                <div class="skill-bar-bg">
+                  <div class="skill-bar-fill" style="width: 90%;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Languages -->
+          <div class="section">
+            <div class="section-title">Languages</div>
+            <div class="section-content">
+              <div class="skill-block">
+                <div class="skill-name">English</div>
+                <div class="skill-bar-bg">
+                  <div class="skill-bar-fill" style="width: 60%;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+    <!-- FIN INGLÉS -->
+
+  </div>
+
+  <script>
+    function setLang(lang) {
+      document.body.classList.toggle('show-en', lang === 'en');
+    }
+
+    function downloadPDF() {
+      // Obtenemos el contenedor que queremos exportar
+      const element = document.getElementById('cv-content');
+
+      // Determinamos el nombre del archivo basado en el idioma actual
+      const isEn = document.body.classList.contains('show-en');
+      const filename = isEn ? 'CVErikson_Orozco_EN.pdf' : 'CVErikson_Orozco_ES.pdf';
+
+      // Opciones para mejorar la calidad y solucionar problemas
+      const opt = {
+        margin: 0,
+        filename: filename,
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: {
+          scale: 2,
+          useCORS: true,
+          logging: false,
+          scrollY: 0,
+          windowWidth: document.documentElement.offsetWidth
+        },
+        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+      };
+
+      // Para evitar que se corte por el padding/margen externo y forzar 1 sola página
+      const originalWidth = element.style.width;
+      const originalHeight = element.style.height;
+      const originalMinHeight = element.style.minHeight;
+      const originalOverflow = element.style.overflow;
+
+      element.style.width = '210mm';
+      element.style.height = '296mm'; // Ligeramente menos de 297mm para evitar la segunda página
+      element.style.minHeight = '296mm';
+      element.style.overflow = 'hidden';
+
+      // Promesa de html2pdf
+      html2pdf().set(opt).from(element).save().then(() => {
+        // Restauramos estilos originales
+        element.style.width = originalWidth;
+        element.style.height = originalHeight;
+        element.style.minHeight = originalMinHeight;
+        element.style.overflow = originalOverflow;
+      }).catch(err => {
+        console.error("Error al generar PDF con html2pdf:", err);
+        alert("Hubo un error al generar el PDF de forma automática. Intentando con el sistema de impresión...");
+        // Fallback a window.print() si html2pdf falla
+        document.title = filename.replace('.pdf', '');
+        window.print();
+      });
+    }
+
+    // Idioma inicial según navegador
+    if (navigator.language && navigator.language.startsWith('en')) {
+      document.body.classList.add('show-en');
+    }
+  </script>
+
+</body>
+
+</html>
