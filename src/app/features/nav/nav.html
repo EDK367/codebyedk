@@ -8,23 +8,23 @@
 
     <!-- Desktop Links -->
     <div class="nav-links">
-      <a href="#about" class="nav-link" [class.active]="activeSection === 'about'" data-cursor="Discover">
+      <a href="#about" class="nav-link" [class.active]="activeSection === 'about'">
         {{ ts.t().NAV_ABOUT }}
       </a>
-      <a href="#technologies" class="nav-link" [class.active]="activeSection === 'technologies'" data-cursor="Explore">
+      <a href="#technologies" class="nav-link" [class.active]="activeSection === 'technologies'">
         {{ ts.t().NAV_TECHNOLOGIES }}
       </a>
-      <a href="#projects" class="nav-link" [class.active]="activeSection === 'projects'" data-cursor="View Projects">
+      <a href="#projects" class="nav-link" [class.active]="activeSection === 'projects'">
         {{ ts.t().NAV_PROJECTS }}
       </a>
-      <a href="#contact" class="nav-link" [class.active]="activeSection === 'contact'" data-cursor="Contact">
+      <a href="#contact" class="nav-link" [class.active]="activeSection === 'contact'">
         {{ ts.t().NAV_CONTACT }}
       </a>
       <a [href]="ts.currentLanguage() === 'en'
     ? 'assets/doc/CVErikson_Orozco_EN.pdf'
     : 'assets/doc/CVErikson_Orozco_ES.pdf'" [attr.download]="ts.currentLanguage() === 'en'
     ? 'CVErikson_Orozco_EN.pdf'
-    : 'CVErikson_Orozco_ES.pdf'" class="nav-link nav-link-cv" data-cursor="Download">
+    : 'CVErikson_Orozco_ES.pdf'" class="nav-link nav-link-cv">
         {{ ts.t().NAV_CV }}
       </a>
     </div>
@@ -32,7 +32,7 @@
     <!-- Controls -->
     <div class="nav-controls">
       <!-- Language Toggle -->
-      <button class="control-btn lang-toggle" (click)="ts.toggleLanguage()" data-cursor="Switch Language"
+      <button class="control-btn lang-toggle" (click)="ts.toggleLanguage()"
         aria-label="Toggle Language">
         <span class="lang-label">{{ ts.currentLanguage() === 'en' ? 'EN' : 'ES' }}</span>
       </button>
