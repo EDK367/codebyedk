@@ -19,6 +19,39 @@
   overflow: hidden;
 }
 
+.hero-back-btn {
+  position: absolute;
+  top: 92px;
+  left: clamp(16px, 4vw, 48px);
+  z-index: 4;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 6px 4px;
+  background: transparent;
+  border: none;
+  color: var(--color-text-secondary);
+  font-family: inherit;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.hero-back-btn i {
+  font-size: 1.4rem;
+  transition: transform 0.3s ease;
+}
+
+.hero-back-btn:hover {
+  color: var(--color-accent);
+  text-shadow: 0 0 10px var(--color-accent-glow);
+}
+
+.hero-back-btn:hover i {
+  transform: translateX(-4px);
+}
+
 .hero-bg {
   position: absolute;
   inset: 0;
@@ -361,6 +394,20 @@
 }
 
 @media (max-width: 768px) {
+  .project-hero {
+    padding-top: 72px;
+    min-height: 460px;
+  }
+
+  .hero-back-btn {
+    top: 76px;
+    font-size: 1rem;
+  }
+
+  .hero-back-btn i {
+    font-size: 1.2rem;
+  }
+
   .glass-panel {
     padding: 24px;
   }

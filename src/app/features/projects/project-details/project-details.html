@@ -6,6 +6,11 @@
 
   <!-- Cinematic Hero Header -->
   <div class="project-hero">
+    <button type="button" class="hero-back-btn" (click)="goBack()" [attr.aria-label]="ts.t().DETAILS_BACK_PREV">
+      <i class="fas fa-arrow-left"></i>
+      <span>{{ ts.t().DETAILS_BACK_PREV }}</span>
+    </button>
+
     <div class="hero-bg">
       @if (project.imageUrl) {
         <img [src]="project.imageUrl" [alt]="project.title">
@@ -115,10 +120,13 @@
   </nav>
   <div class="content-wrapper not-found">
     <h1>{{ ts.t().DETAILS_NOT_FOUND }}</h1>
-    <a routerLink="/more-projects" class="premium-button premium-button-primary mt-4">
-      <span class="button-content">{{ ts.t().DETAILS_GO_BACK }}</span>
+    <button type="button" (click)="goBack()" class="premium-button premium-button-primary mt-4">
+      <span class="button-content">
+        <i class="fas fa-arrow-left"></i>
+        {{ ts.t().DETAILS_GO_BACK }}
+      </span>
       <span class="button-glare"></span>
-    </a>
+    </button>
   </div>
 </main>
 }

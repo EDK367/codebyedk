@@ -1,6 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { Router, NavigationEnd, RouterOutlet } from '@angular/router';
-import { filter } from 'rxjs/operators';
+import { Router, NavigationStart, NavigationEnd, RouterOutlet } from '@angular/router';
 import { CustomCursor } from './shared/custom-cursor/custom-cursor';
 
 @Component({
@@ -13,15 +12,18 @@ import { CustomCursor } from './shared/custom-cursor/custom-cursor';
 export class App implements OnInit {
   title = 'Portfolio';
   private router = inject(Router);
+  private isPopState = false;
 
   ngOnInit() {
-    this.router.events.pipe(
-      filter((event): event is NavigationEnd => event instanceof NavigationEnd)
-    ).subscribe((event) => {
-      if (!event.urlAfterRedirects.includes('#')) {
-        setTimeout(() => {
-          window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-        }, 50);
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationStart) {
+        this.isPopState = event.navigationTrigger === 'popstate';
+      } else if (event instanceof NavigationEnd) {
+        if (!this.isPopState && !event.urlAfterRedirects.includes('#')) {
+          setTimeout(() => {
+            window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+          }, 50);
+        }
       }
     });
   }

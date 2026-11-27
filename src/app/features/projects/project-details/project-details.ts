@@ -1,7 +1,7 @@
-import { Component, inject, OnInit } from '@angular/core';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { Component, inject, OnInit, PLATFORM_ID } from '@angular/core';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { PROJECTS, Project } from '../../../core/data/projects-data';
-import { CommonModule } from '@angular/common';
+import { CommonModule, Location, isPlatformBrowser } from '@angular/common';
 import { Nav } from '../../nav/nav';
 import { TranslationService } from '../../../core/services/translation.service';
 
@@ -14,6 +14,9 @@ import { TranslationService } from '../../../core/services/translation.service';
 })
 export class ProjectDetails implements OnInit {
   private route = inject(ActivatedRoute);
+  private router = inject(Router);
+  private location = inject(Location);
+  private platformId = inject(PLATFORM_ID);
   ts = inject(TranslationService);
   
   project: Project | undefined;
@@ -33,5 +36,13 @@ export class ProjectDetails implements OnInit {
         });
       }, 100);
     });
+  }
+
+  goBack(): void {
+    if (isPlatformBrowser(this.platformId) && (window.history.state?.navigationId ?? 0) > 1) {
+      this.location.back();
+    } else {
+      this.router.navigate(['/more-projects']);
+    }
   }
 }
