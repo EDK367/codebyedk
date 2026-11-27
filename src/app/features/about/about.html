@@ -4,7 +4,7 @@
   <div class="about-header reveal-left">
     <div class="section-badge">
       <span class="badge-dot"></span>
-      <span class="badge-text">01 // Profile</span>
+      <span class="badge-text">{{ ts.t().ABOUT_BADGE }}</span>
     </div>
     <h2 class="section-title">
       <span class="gradient-text">{{ ts.t().ABOUT_GREETING }}</span>
@@ -26,7 +26,7 @@
       </div>
 
       <div class="about-actions mt-4">
-        <a routerLink="/more-about" class="premium-button premium-button-primary" data-cursor="Read More">
+        <a routerLink="/more-about" class="premium-button premium-button-primary">
           <span class="button-content">
             {{ ts.t().ABOUT_MORE_BTN }}
             <i class="fas fa-arrow-right"></i>
@@ -48,12 +48,16 @@
             
             <div class="card-data">
               <div class="data-row">
-                <span class="data-label">Status</span>
-                <span class="data-value status-online">Online</span>
+                <span class="data-label">{{ ts.t().ABOUT_STATUS_LABEL }}</span>
+                <span class="data-value status-online">{{ ts.t().ABOUT_STATUS_VALUE }}</span>
               </div>
               <div class="data-row">
-                <span class="data-label">Role</span>
-                <span class="data-value">Backend Specialist</span>
+                <span class="data-label">{{ ts.t().ABOUT_ROLE_LABEL }}</span>
+                <span class="data-value">{{ ts.t().ABOUT_ROLE_VALUE }}</span>
+              </div>
+              <div class="data-row">
+                <span class="data-label">{{ ts.t().ABOUT_EXP_LABEL }}</span>
+                <span class="data-value">{{ ts.t().ABOUT_EXP_VALUE }}</span>
               </div>
             </div>
           </div>

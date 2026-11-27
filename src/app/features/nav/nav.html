@@ -1,23 +1,23 @@
 <header class="nav-header" [class.scrolled]="isScrolled">
   <nav class="nav-inner">
     <!-- Logo -->
-    <a class="nav-logo" [routerLink]="['/']" data-cursor="Home">
+    <a class="nav-logo" [routerLink]="['/']">
       <span class="logo-symbol">&lt;/&gt;</span>
       <span class="logo-text">EDK367</span>
     </a>
 
     <!-- Desktop Links -->
     <div class="nav-links">
-      <a href="#about" class="nav-link" [class.active]="activeSection === 'about'">
+      <a [routerLink]="['/']" fragment="about" class="nav-link" [class.active]="activeSection === 'about'">
         {{ ts.t().NAV_ABOUT }}
       </a>
-      <a href="#technologies" class="nav-link" [class.active]="activeSection === 'technologies'">
+      <a [routerLink]="['/']" fragment="technologies" class="nav-link" [class.active]="activeSection === 'technologies'">
         {{ ts.t().NAV_TECHNOLOGIES }}
       </a>
-      <a href="#projects" class="nav-link" [class.active]="activeSection === 'projects'">
+      <a [routerLink]="['/']" fragment="projects" class="nav-link" [class.active]="activeSection === 'projects'">
         {{ ts.t().NAV_PROJECTS }}
       </a>
-      <a href="#contact" class="nav-link" [class.active]="activeSection === 'contact'">
+      <a [routerLink]="['/']" fragment="contact" class="nav-link" [class.active]="activeSection === 'contact'">
         {{ ts.t().NAV_CONTACT }}
       </a>
       <a [href]="ts.currentLanguage() === 'en'
@@ -62,19 +62,19 @@
       <span class="logo-text">EDK</span>
     </div>
     <nav class="mobile-nav-links">
-      <a href="#about" class="mobile-link" (click)="closeMobileMenu()">
+      <a [routerLink]="['/']" fragment="about" class="mobile-link" (click)="closeMobileMenu()">
         <span class="mobile-link-number">01</span>
         <span>{{ ts.t().NAV_ABOUT }}</span>
       </a>
-      <a href="#technologies" class="mobile-link" (click)="closeMobileMenu()">
+      <a [routerLink]="['/']" fragment="technologies" class="mobile-link" (click)="closeMobileMenu()">
         <span class="mobile-link-number">02</span>
         <span>{{ ts.t().NAV_TECHNOLOGIES }}</span>
       </a>
-      <a href="#projects" class="mobile-link" (click)="closeMobileMenu()">
+      <a [routerLink]="['/']" fragment="projects" class="mobile-link" (click)="closeMobileMenu()">
         <span class="mobile-link-number">03</span>
         <span>{{ ts.t().NAV_PROJECTS }}</span>
       </a>
-      <a href="#contact" class="mobile-link" (click)="closeMobileMenu()">
+      <a [routerLink]="['/']" fragment="contact" class="mobile-link" (click)="closeMobileMenu()">
         <span class="mobile-link-number">04</span>
         <span>{{ ts.t().NAV_CONTACT }}</span>
       </a>

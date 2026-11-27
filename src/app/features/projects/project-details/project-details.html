@@ -1,4 +1,5 @@
-<main class="page-container" *ngIf="project">
+@if (project) {
+<main class="page-container">
   <nav>
     <app-nav></app-nav>
   </nav>
@@ -6,25 +7,44 @@
   <!-- Cinematic Hero Header -->
   <div class="project-hero">
     <div class="hero-bg">
-      <img [src]="project.imageUrl" [alt]="project.title">
+      @if (project.imageUrl) {
+        <img [src]="project.imageUrl" [alt]="project.title">
+      } @else {
+        <div class="hero-placeholder">
+          <i [class]="project.icon || 'fas fa-code'"></i>
+        </div>
+      }
       <div class="hero-overlay"></div>
     </div>
     
     <div class="hero-content reveal-scale">
       <div class="tech-tags">
-        <span *ngFor="let tag of project.tags" class="tech-tag">{{ tag }}</span>
+        @for (tag of project.tags; track tag) {
+          <span class="tech-tag">{{ tag }}</span>
+        }
       </div>
       <h1 class="project-title gradient-text">{{ project.title }}</h1>
-      <p class="project-subtitle">{{ project.shortDescription }}</p>
+      <p class="project-subtitle">{{ ts.currentLanguage() === 'es' ? project.shortDescriptionEs : project.shortDescription }}</p>
       
       <div class="hero-actions">
-        <a *ngIf="project.githubUrl" [href]="project.githubUrl" target="_blank" rel="noopener" class="premium-button premium-button-primary" data-cursor="View Source">
-          <span class="button-content">
-            View on GitHub
-            <i class="fab fa-github"></i>
-          </span>
-          <span class="button-glare"></span>
-        </a>
+        @if (project.githubUrl) {
+          <a [href]="project.githubUrl" target="_blank" rel="noopener" class="premium-button premium-button-primary">
+            <span class="button-content">
+              {{ ts.t().DETAILS_VIEW_GITHUB }}
+              <i class="fab fa-github"></i>
+            </span>
+            <span class="button-glare"></span>
+          </a>
+        }
+        @if (project.demoUrl) {
+          <a [href]="project.demoUrl" target="_blank" rel="noopener" class="premium-button premium-button-secondary">
+            <span class="button-content">
+              {{ ts.t().DETAILS_LIVE_DEMO }}
+              <i class="fas fa-arrow-up-right-from-square"></i>
+            </span>
+            <span class="button-glare"></span>
+          </a>
+        }
       </div>
     </div>
   </div>
@@ -34,14 +54,16 @@
       <!-- Main Content -->
       <div class="main-column reveal-left">
         <div class="glass-panel">
-          <h2 class="section-heading">Overview</h2>
-          <div class="description-content" [innerHTML]="project.fullDescription"></div>
+          <h2 class="section-heading">{{ ts.t().DETAILS_OVERVIEW }}</h2>
+          <div class="description-content" [innerHTML]="ts.currentLanguage() === 'es' ? project.fullDescriptionEs : project.fullDescription"></div>
           
-          <h2 class="section-heading mt-5">Key Features</h2>
+          <h2 class="section-heading mt-5">{{ ts.t().DETAILS_FEATURES }}</h2>
           <ul class="styled-list">
-            <li *ngFor="let feature of project.features">
-              <strong>Feature:</strong> {{ feature }}
-            </li>
+            @for (feature of (ts.currentLanguage() === 'es' ? project.featuresEs : project.features); track feature) {
+              <li>
+                <strong>{{ ts.t().DETAILS_FEATURE_PREFIX }}</strong> {{ feature }}
+              </li>
+            }
           </ul>
         </div>
       </div>
@@ -49,22 +71,36 @@
       <!-- Sidebar -->
       <div class="sidebar-column reveal-right">
         <div class="glass-panel sticky-sidebar">
-          <h3 class="sidebar-heading">Technologies Used</h3>
+          <h3 class="sidebar-heading">{{ ts.t().DETAILS_TECH_USED }}</h3>
           <div class="tech-grid">
-            <div *ngFor="let tech of project.technologies" class="tech-item">
-              <i class="fas fa-check-circle text-accent"></i>
-              <span>{{ tech }}</span>
-            </div>
+            @for (tech of project.technologies; track tech) {
+              <div class="tech-item">
+                <i class="fas fa-check-circle text-accent"></i>
+                <span>{{ tech }}</span>
+              </div>
+            }
           </div>
           
           <div class="sidebar-divider"></div>
           
           <div class="project-links">
-            <a *ngIf="project.githubUrl" [href]="project.githubUrl" target="_blank" rel="noopener" class="sidebar-link">
-              <i class="fab fa-github"></i> Repository
-            </a>
+            @if (project.githubUrl) {
+              <a [href]="project.githubUrl" target="_blank" rel="noopener" class="sidebar-link">
+                <i class="fab fa-github"></i> {{ project.frontendGithubUrl ? ts.t().DETAILS_BACKEND_REPO : ts.t().DETAILS_REPO }}
+              </a>
+            }
+            @if (project.frontendGithubUrl) {
+              <a [href]="project.frontendGithubUrl" target="_blank" rel="noopener" class="sidebar-link">
+                <i class="fab fa-github"></i> {{ ts.t().DETAILS_FRONTEND_REPO }}
+              </a>
+            }
+            @if (project.demoUrl) {
+              <a [href]="project.demoUrl" target="_blank" rel="noopener" class="sidebar-link">
+                <i class="fas fa-arrow-up-right-from-square"></i> {{ ts.t().DETAILS_LIVE_DEMO }}
+              </a>
+            }
             <a routerLink="/more-projects" class="sidebar-link back-link">
-              <i class="fas fa-arrow-left"></i> Back to Projects
+              <i class="fas fa-arrow-left"></i> {{ ts.t().DETAILS_BACK }}
             </a>
           </div>
         </div>
@@ -72,16 +108,17 @@
     </div>
   </div>
 </main>
-
-<main class="page-container" *ngIf="!project">
+} @else {
+<main class="page-container">
   <nav>
     <app-nav></app-nav>
   </nav>
   <div class="content-wrapper not-found">
-    <h1>Project not found.</h1>
+    <h1>{{ ts.t().DETAILS_NOT_FOUND }}</h1>
     <a routerLink="/more-projects" class="premium-button premium-button-primary mt-4">
-      <span class="button-content">Go Back</span>
+      <span class="button-content">{{ ts.t().DETAILS_GO_BACK }}</span>
       <span class="button-glare"></span>
     </a>
   </div>
 </main>
+}

@@ -3,6 +3,7 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { PROJECTS, Project } from '../../../core/data/projects-data';
 import { CommonModule } from '@angular/common';
 import { Nav } from '../../nav/nav';
+import { TranslationService } from '../../../core/services/translation.service';
 
 @Component({
   selector: 'app-project-details',
@@ -13,6 +14,7 @@ import { Nav } from '../../nav/nav';
 })
 export class ProjectDetails implements OnInit {
   private route = inject(ActivatedRoute);
+  ts = inject(TranslationService);
   
   project: Project | undefined;
   projectId: string | null = null;

@@ -19,22 +19,29 @@ export class Technologies implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('techSection', { static: false }) sectionRef!: ElementRef<HTMLElement>;
 
   tech = [
-    { name: "Java", icon: "fab fa-java", orbit: 1, angle: 0, color: "#f89820" },
-    { name: "SpringBoot", icon: "fab fa-envira", orbit: 1, angle: 120, color: "#6db33f" },
-    { name: "MySQL", icon: "fas fa-database", orbit: 1, angle: 240, color: "#00758f" },
-    { name: "Python", icon: "fab fa-python", orbit: 2, angle: 45, color: "#3776ab" },
-    { name: "Go", icon: "fab fa-golang", orbit: 2, angle: 135, color: "#00add8" },
-    { name: "Git", icon: "fab fa-square-git", orbit: 2, angle: 225, color: "#f1502f" },
-    { name: "Docker", icon: "fab fa-docker", orbit: 2, angle: 315, color: "#2496ed" },
-    { name: "MongoDB", icon: "fas fa-leaf", orbit: 3, angle: 60, color: "#47a248" },
-    { name: "JavaScript", icon: "fab fa-js", orbit: 3, angle: 180, color: "#f7df1e" },
-    { name: "Vue.js", icon: "fab fa-vuejs", orbit: 3, angle: 300, color: "#4fc08d" },
+    { name: "Java", key: "java", icon: "fab fa-java", orbit: 1, angle: 0, color: "#f89820" },
+    { name: "Elixir", key: "elixir", icon: "", orbit: 1, angle: 90, color: "#9b59b6" },
+    { name: "Go", key: "go", icon: "fab fa-golang", orbit: 1, angle: 180, color: "#00add8" },
+    { name: "Python", key: "python", icon: "fab fa-python", orbit: 1, angle: 270, color: "#3776ab" },
+    { name: "Spring Boot", key: "spring", icon: "fab fa-envira", orbit: 2, angle: 0, color: "#6db33f" },
+    { name: "Quarkus", key: "quarkus", icon: "", orbit: 2, angle: 72, color: "#4695eb" },
+    { name: "PostgreSQL", key: "postgresql", icon: "", orbit: 2, angle: 144, color: "#336791" },
+    { name: "MySQL", key: "mysql", icon: "fas fa-database", orbit: 2, angle: 216, color: "#00758f" },
+    { name: "MongoDB", key: "mongodb", icon: "fas fa-leaf", orbit: 2, angle: 288, color: "#47a248" },
+    { name: "Angular", key: "angular", icon: "fab fa-angular", orbit: 3, angle: 30, color: "#dd0031" },
+    { name: "TypeScript", key: "typescript", icon: "", orbit: 3, angle: 90, color: "#3178c6" },
+    { name: "React", key: "react", icon: "fab fa-react", orbit: 3, angle: 150, color: "#61dafb" },
+    { name: "Vue.js", key: "vue", icon: "fab fa-vuejs", orbit: 3, angle: 210, color: "#4fc08d" },
+    { name: "Docker", key: "docker", icon: "fab fa-docker", orbit: 3, angle: 270, color: "#2496ed" },
+    { name: "Git", key: "git", icon: "fab fa-git-alt", orbit: 3, angle: 330, color: "#f1502f" },
   ];
 
   isHovering = false;
   hoveredTech: string | null = null;
-  private animationId: number = 0;
+  private animationId = 0;
   private rotation = 0;
+  private rotationSpeed = 0.12;
+  private targetSpeed = 0.12;
 
   // Canvas
   private ctx!: CanvasRenderingContext2D;
@@ -55,8 +62,9 @@ export class Technologies implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private animate = () => {
-    if (!this.isHovering && this.orbitRef) {
-      this.rotation += 0.1;
+    this.rotationSpeed += (this.targetSpeed - this.rotationSpeed) * 0.06;
+    if (this.orbitRef && Math.abs(this.rotationSpeed) > 0.0005) {
+      this.rotation += this.rotationSpeed;
       this.orbitRef.nativeElement.style.setProperty('--global-rotation', `${this.rotation}deg`);
     }
     this.animationId = requestAnimationFrame(this.animate);
@@ -263,6 +271,7 @@ export class Technologies implements OnInit, AfterViewInit, OnDestroy {
   setHover(name: string | null) {
     this.isHovering = !!name;
     this.hoveredTech = name;
+    this.targetSpeed = name ? 0 : 0.12;
   }
 
   ngOnDestroy() {

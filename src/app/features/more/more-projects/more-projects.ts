@@ -18,14 +18,21 @@ export class MoreProjects implements OnInit {
   filteredProjects = this.allProjects;
   activeFilter = 'All';
 
-  filters = ['All', 'Java', 'Python', 'Go', 'Web'];
+  filters = ['All', 'Java', 'Python', 'Go', 'Web', 'C++', 'Compilers', 'Systems'];
+
+  getFilterLabel(filter: string): string {
+    if (filter === 'All') return this.ts.t().FILTER_ALL;
+    if (filter === 'Compilers') return this.ts.t().FILTER_COMPILERS;
+    if (filter === 'Systems') return this.ts.t().FILTER_SYSTEMS;
+    return filter;
+  }
 
   ngOnInit() {
     setTimeout(() => {
       document.querySelectorAll('.reveal, .reveal-scale, .reveal-up').forEach(el => {
         el.classList.add('revealed');
       });
-    }, 100);
+    }, 50);
   }
 
   setFilter(filter: string) {
@@ -42,7 +49,7 @@ export class MoreProjects implements OnInit {
         el.classList.remove('revealed');
         setTimeout(() => {
           el.classList.add('revealed');
-        }, 50 * index);
+        }, 40 * index);
       });
     }, 10);
   }

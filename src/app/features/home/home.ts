@@ -298,13 +298,21 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
           }
         }
       });
-    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    }, { threshold: 0.02, rootMargin: '0px 0px -20px 0px' });
 
-    setTimeout(() => {
+    const observeReveals = () => {
+      const vh = window.innerHeight || 900;
       document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < vh * 0.95) {
+          el.classList.add('revealed');
+        }
         this.observer.observe(el);
       });
-    }, 500);
+    };
+
+    setTimeout(observeReveals, 50);
+    setTimeout(observeReveals, 400);
   }
 
   private onMouseMove = (e: MouseEvent) => {

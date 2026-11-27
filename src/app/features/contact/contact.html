@@ -6,7 +6,7 @@
   <div class="contact-header reveal-scale">
     <div class="section-badge">
       <span class="badge-dot"></span>
-      <span class="badge-text">04 // Connect</span>
+      <span class="badge-text">{{ ts.t().CONTACT_BADGE }}</span>
     </div>
     <h2 class="section-title">
       <span class="gradient-text">{{ ts.t().CONTACT_TITLE }}</span>
@@ -16,34 +16,40 @@
   <div class="contact-content">
     <div class="social-grid">
       <!-- GitHub -->
-      <a href="https://github.com/EDK367" target="_blank" rel="noopener" class="social-card github-card reveal-left" data-cursor="Open GitHub">
-        <div class="card-bg"></div>
-        <div class="card-content-inner">
-          <i class="fab fa-github social-icon"></i>
-          <span class="social-name">GitHub</span>
-          <span class="social-action">Explore Code <i class="fas fa-arrow-right"></i></span>
-        </div>
-      </a>
+      <div class="social-card-reveal reveal-left">
+        <a href="https://github.com/EDK367" target="_blank" rel="noopener" class="social-card github-card">
+          <div class="card-bg"></div>
+          <div class="card-content-inner">
+            <i class="fab fa-github social-icon"></i>
+            <span class="social-name">GitHub</span>
+            <span class="social-action">{{ ts.t().CONTACT_GITHUB_ACTION }} <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </a>
+      </div>
 
       <!-- LinkedIn -->
-      <a href="https://www.linkedin.com/in/erikson-denilson-orozco-monterroso-498084324" target="_blank" rel="noopener" class="social-card linkedin-card reveal-scale" data-cursor="Open LinkedIn">
-        <div class="card-bg"></div>
-        <div class="card-content-inner">
-          <i class="fab fa-linkedin social-icon"></i>
-          <span class="social-name">LinkedIn</span>
-          <span class="social-action">Connect <i class="fas fa-arrow-right"></i></span>
-        </div>
-      </a>
+      <div class="social-card-reveal reveal-scale">
+        <a href="https://www.linkedin.com/in/erikson-denilson-orozco-monterroso-498084324" target="_blank" rel="noopener" class="social-card linkedin-card">
+          <div class="card-bg"></div>
+          <div class="card-content-inner">
+            <i class="fab fa-linkedin social-icon"></i>
+            <span class="social-name">LinkedIn</span>
+            <span class="social-action">{{ ts.t().CONTACT_LINKEDIN_ACTION }} <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </a>
+      </div>
 
       <!-- Email -->
-      <a href="mailto:denilmonterroso22@gmail.com" target="_blank" rel="noopener" class="social-card email-card reveal-right" data-cursor="Send Email">
-        <div class="card-bg"></div>
-        <div class="card-content-inner">
-          <i class="fas fa-envelope social-icon"></i>
-          <span class="social-name">Email</span>
-          <span class="social-action">Say Hello <i class="fas fa-arrow-right"></i></span>
-        </div>
-      </a>
+      <div class="social-card-reveal reveal-right">
+        <a href="mailto:denilmonterroso22@gmail.com" target="_blank" rel="noopener" class="social-card email-card">
+          <div class="card-bg"></div>
+          <div class="card-content-inner">
+            <i class="fas fa-envelope social-icon"></i>
+            <span class="social-name">Email</span>
+            <span class="social-action">{{ ts.t().CONTACT_EMAIL_ACTION }} <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </a>
+      </div>
     </div>
   </div>
 </div>

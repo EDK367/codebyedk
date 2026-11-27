@@ -285,6 +285,7 @@ main {
 
 .section-block {
   position: relative;
+  scroll-margin-top: 84px;
 }
 
 /* ═══ FOOTER ═══ */

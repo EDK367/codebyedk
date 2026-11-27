@@ -2,6 +2,7 @@ import { Component, inject, ElementRef, QueryList, ViewChildren, ViewChild, Afte
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { TranslationService } from '../../core/services/translation.service';
+import { PROJECTS, Project } from '../../core/data/projects-data';
 
 @Component({
   selector: 'app-projects',
@@ -13,6 +14,7 @@ import { TranslationService } from '../../core/services/translation.service';
 export class Projects implements AfterViewInit, OnDestroy {
   ts = inject(TranslationService);
   private platformId = inject(PLATFORM_ID);
+  featuredProjects: Project[] = PROJECTS.filter(p => p.featured).slice(0, 4);
 
   @ViewChildren('projectCard') cards!: QueryList<ElementRef<HTMLElement>>;
   @ViewChild('projCanvas', { static: false }) canvasRef!: ElementRef<HTMLCanvasElement>;
@@ -34,8 +36,9 @@ export class Projects implements AfterViewInit, OnDestroy {
     const y = e.clientY - rect.top;
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
-    const rotateX = ((y - centerY) / centerY) * -8;
-    const rotateY = ((x - centerX) / centerX) * 8;
+    const rotateX = ((y - centerY) / centerY) * -6;
+    const rotateY = ((x - centerX) / centerX) * 6;
+    card.classList.add('is-tilting');
     card.style.setProperty('--rotateX', `${rotateX}deg`);
     card.style.setProperty('--rotateY', `${rotateY}deg`);
     card.style.setProperty('--mouseX', `${x}px`);
@@ -43,6 +46,7 @@ export class Projects implements AfterViewInit, OnDestroy {
   };
 
   private onMouseLeave = (card: HTMLElement) => {
+    card.classList.remove('is-tilting');
     card.style.setProperty('--rotateX', `0deg`);
     card.style.setProperty('--rotateY', `0deg`);
   };
@@ -144,7 +148,6 @@ export class Projects implements AfterViewInit, OnDestroy {
 
     // Draw perspective grid floor (vanishing point at mouse)
     const vpx = this.mouse.x > 0 ? this.mouse.x : w / 2;
-    const vpy = this.mouse.y > 0 ? this.mouse.y : h / 2;
 
     for (let i = 0; i < 15; i++) {
       const y = h * (0.3 + i * 0.05);

@@ -14,49 +14,69 @@
 
     <!-- Filters -->
     <div class="filters-container reveal-up">
-      <button 
-        *ngFor="let filter of filters" 
-        class="filter-btn" 
-        [class.active]="activeFilter === filter"
-        (click)="setFilter(filter)"
-        [attr.data-cursor]="'Filter: ' + filter">
-        {{ filter }}
-      </button>
+      @for (filter of filters; track filter) {
+        <button 
+          class="filter-btn" 
+          [class.active]="activeFilter === filter"
+          (click)="setFilter(filter)">
+          {{ getFilterLabel(filter) }}
+        </button>
+      }
     </div>
 
     <!-- Projects Grid -->
     <div class="projects-grid">
-      <div *ngFor="let p of filteredProjects; let i = index" 
-           class="project-card-wrapper reveal-up" 
-           [style.transition-delay]="(i * 0.1) + 's'">
-        
-        <div class="project-card">
-          <div class="card-image-container">
-            <img [src]="p.imageUrl" [alt]="p.title" class="project-image">
-            <div class="image-overlay"></div>
-          </div>
+      @for (p of filteredProjects; track p.id; let i = $index) {
+        <div class="project-card-wrapper reveal-up" 
+             [style.transition-delay]="(i * 0.05) + 's'">
           
-          <div class="card-content">
-            <div class="tech-tags">
-              <span *ngFor="let tag of p.tags" class="tech-tag">{{ tag }}</span>
+          <div class="project-card">
+            <div class="card-image-container">
+              @if (p.imageUrl) {
+                <img [src]="p.imageUrl" [alt]="p.title" class="project-image">
+              } @else {
+                <div class="image-placeholder">
+                  <i [class]="p.icon || 'fas fa-code'"></i>
+                  <span>{{ ts.t().IMAGE_SLOT_LABEL }}</span>
+                </div>
+              }
+              <div class="image-overlay"></div>
             </div>
             
-            <h3 class="project-title">{{ p.title }}</h3>
-            <p class="project-desc">{{ p.shortDescription }}</p>
-            
-            <div class="project-actions">
-              <a *ngIf="p.githubUrl" [href]="p.githubUrl" target="_blank" rel="noopener" class="action-btn action-github" data-cursor="View Source">
-                <i class="fab fa-github"></i>
-              </a>
-              <a [routerLink]="['/project', p.id]" class="action-btn action-details" data-cursor="View Details">
-                <span>{{ ts.t().DETAILS_BTN }}</span>
-                <i class="fas fa-arrow-right"></i>
-              </a>
+            <div class="card-content">
+              <div class="tech-tags">
+                @for (tag of p.technologies.slice(0, 4); track tag) {
+                  <span class="tech-tag">{{ tag }}</span>
+                }
+              </div>
+              
+              <h3 class="project-title">{{ p.title }}</h3>
+              <p class="project-desc">{{ ts.currentLanguage() === 'es' ? p.shortDescriptionEs : p.shortDescription }}</p>
+              
+              <div class="project-actions">
+                <div class="action-links-left">
+                  @if (p.githubUrl) {
+                    <a [href]="p.githubUrl" target="_blank" rel="noopener" class="action-btn action-github" [attr.aria-label]="p.title + ' GitHub'">
+                      <i class="fab fa-github"></i>
+                    </a>
+                  }
+                  @if (p.demoUrl) {
+                    <a [href]="p.demoUrl" target="_blank" rel="noopener" class="action-btn action-demo">
+                      <i class="fas fa-arrow-up-right-from-square"></i>
+                      <span>{{ ts.t().DEMO_BTN }}</span>
+                    </a>
+                  }
+                </div>
+                <a [routerLink]="['/project', p.id]" class="action-btn action-details">
+                  <span>{{ ts.t().DETAILS_BTN }}</span>
+                  <i class="fas fa-arrow-right"></i>
+                </a>
+              </div>
             </div>
           </div>
-        </div>
 
-      </div>
+        </div>
+      }
     </div>
   </div>
 </main>

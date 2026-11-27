@@ -5,7 +5,7 @@
   background: var(--color-bg-primary);
   padding-bottom: 80px;
   position: relative;
-  overflow: hidden;
+  overflow-x: clip;
 }
 
 /* Unique 3D Perspective Grid Effect */
@@ -136,6 +136,38 @@
   width: 100%;
   aspect-ratio: 16/9;
   overflow: hidden;
+  background: radial-gradient(circle at top right, rgba(191, 90, 242, 0.14), rgba(10, 10, 20, 0.9));
+}
+
+.image-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: linear-gradient(135deg, rgba(0, 229, 255, 0.06) 0%, rgba(191, 90, 242, 0.08) 100%);
+  border-bottom: 1px dashed rgba(191, 90, 242, 0.25);
+}
+
+.image-placeholder i {
+  font-size: 2.6rem;
+  color: var(--color-purple);
+  opacity: 0.85;
+  transition: transform 0.5s var(--ease-out-expo);
+}
+
+.image-placeholder span {
+  font-family: 'Space Grotesk', monospace;
+  font-size: 0.76rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+}
+
+.project-card:hover .image-placeholder i {
+  transform: scale(1.08);
 }
 
 .project-image {
@@ -207,6 +239,21 @@
   margin-top: auto;
   border-top: 1px solid var(--color-border);
   padding-top: 20px;
+}
+
+.action-links-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.action-demo {
+  color: var(--color-accent);
+  font-size: 0.85rem;
+}
+
+.action-demo:hover {
+  color: var(--color-text-primary);
 }
 
 .action-btn {

@@ -47,18 +47,17 @@ export class CustomCursor implements OnInit, OnDestroy {
 
     const onMouseOver = this.renderer.listen('document', 'mouseover', (e: MouseEvent) => {
       const target = e.target as HTMLElement;
-      const interactive = target.closest('a, button, [data-cursor]');
+      const interactive = target.closest('a, button');
       if (interactive) {
         this.isHovering = true;
-        const label = interactive.getAttribute('data-cursor') || '';
-        this.cursorLabel = label;
+        this.cursorLabel = '';
       }
     });
     this.listeners.push(onMouseOver);
 
     const onMouseOut = this.renderer.listen('document', 'mouseout', (e: MouseEvent) => {
       const target = e.target as HTMLElement;
-      const interactive = target.closest('a, button, [data-cursor]');
+      const interactive = target.closest('a, button');
       if (interactive) {
         this.isHovering = false;
         this.cursorLabel = '';

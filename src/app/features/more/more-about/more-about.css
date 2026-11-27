@@ -5,7 +5,7 @@
   background: var(--color-bg-primary);
   padding-bottom: 80px;
   position: relative;
-  overflow: hidden;
+  overflow-x: clip;
 }
 
 /* Unique Holographic Code Effect */

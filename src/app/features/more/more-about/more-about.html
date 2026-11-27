@@ -22,59 +22,71 @@
         <div class="card-bg"></div>
         <div class="card-content">
           <div class="card-icon"><i class="fas fa-user-astronaut"></i></div>
-          <h2 class="card-title">My Journey</h2>
+          <h2 class="card-title">{{ ts.t().MORE_ABOUT_JOURNEY_TITLE }}</h2>
           <p>
-            Hi! I'm Erikson Orozco, a college student and backend enthusiast. While I specialize in backend
-            development, I also dabble in frontend development to create comprehensive academic projects. My playing
-            field includes REST APIs, web development, and microservices. I'm a fan of Go (Golang) and Java, but I'm
-            always exploring new technologies. When I'm not coding, you'll find me debugging my decisions or making
-            coffee.
+            {{ ts.t().MORE_ABOUT_JOURNEY_TEXT }}
           </p>
         </div>
       </section>
 
-      <section class="info-card reveal-right" style="transition-delay: 0.2s;">
+      <section class="info-card reveal-right" style="transition-delay: 0.15s;">
+        <div class="card-bg"></div>
+        <div class="card-content">
+          <div class="card-icon"><i class="fas fa-briefcase"></i></div>
+          <h2 class="card-title">{{ ts.t().MORE_ABOUT_EXP_TITLE }}</h2>
+          <p>
+            {{ ts.t().MORE_ABOUT_EXP_INTRO }}
+          </p>
+          <ul class="styled-list">
+            <li>
+              <strong>{{ ts.t().MORE_ABOUT_EXP_PHARMACY_TITLE }}</strong>
+              {{ ts.t().MORE_ABOUT_EXP_PHARMACY_DESC }}
+            </li>
+            <li>
+              <strong>{{ ts.t().MORE_ABOUT_EXP_DENTAL_TITLE }}</strong>
+              {{ ts.t().MORE_ABOUT_EXP_DENTAL_DESC }}
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="info-card reveal-left" style="transition-delay: 0.2s;">
         <div class="card-bg"></div>
         <div class="card-content">
           <div class="card-icon"><i class="fas fa-graduation-cap"></i></div>
-          <h2 class="card-title">Education</h2>
+          <h2 class="card-title">{{ ts.t().MORE_ABOUT_EDU_TITLE }}</h2>
           <p>
-            I am currently in my sixth semester of studying Systems Engineering and Computer Science at the
-            University of San Carlos of Guatemala. In addition to my academic studies, I have earned certifications
-            in:
+            {{ ts.t().MORE_ABOUT_EDU_TEXT }}
           </p>
           <ul class="styled-list">
-            <li><strong>Microservices</strong> & <strong>Docker</strong> – Código Facilito</li>
-            <li><strong>GitHub Education</strong> & <strong>MySQL</strong> – Udemy</li>
+            <li><strong>Spring Boot, Microservices &amp; Docker</strong> – Código Facilito</li>
+            <li><strong>Angular &amp; MySQL</strong> – Udemy</li>
             <li><strong>Go (Golang)</strong> – Código Facilito</li>
           </ul>
         </div>
       </section>
 
-      <section class="info-card reveal-left" style="transition-delay: 0.3s;">
+      <section class="info-card reveal-right" style="transition-delay: 0.3s;">
         <div class="card-bg"></div>
         <div class="card-content">
           <div class="card-icon"><i class="fas fa-laptop-code"></i></div>
-          <h2 class="card-title">Roles</h2>
+          <h2 class="card-title">{{ ts.t().MORE_ABOUT_ROLES_TITLE }}</h2>
           <p>
-            I'm a two-faceted person: a backend developer by passion and a frontend explorer by necessity. In
-            academic projects, I've built everything from scalable compilers and APIs to interactive web
-            applications. Whether optimizing databases or tweaking UI components, I love turning my ideas into
-            working code.
+            {{ ts.t().MORE_ABOUT_ROLES_TEXT }}
           </p>
         </div>
       </section>
 
-      <section class="info-card reveal-right" style="transition-delay: 0.4s;">
+      <section class="info-card reveal-left" style="transition-delay: 0.4s;">
         <div class="card-bg"></div>
         <div class="card-content">
           <div class="card-icon"><i class="fas fa-brain"></i></div>
-          <h2 class="card-title">Soft Skills</h2>
+          <h2 class="card-title">{{ ts.t().MORE_ABOUT_SOFT_TITLE }}</h2>
           <ul class="styled-list">
-            <li><strong>Communication:</strong> I break down complex technical jargon into clear, human-friendly language.</li>
-            <li><strong>Teamwork:</strong> I collaborate with empathy and humility — success is a shared victory.</li>
-            <li><strong>Critical Thinking:</strong> I approach problems like a debugger chasing down a segfault — precise and persistent.</li>
-            <li><strong>Adaptability:</strong> I quickly learn and adapt to new languages, tools, and technologies with ease.</li>
+            <li><strong>{{ ts.t().MORE_ABOUT_SOFT_1_LABEL }}</strong> {{ ts.t().MORE_ABOUT_SOFT_1_TEXT }}</li>
+            <li><strong>{{ ts.t().MORE_ABOUT_SOFT_2_LABEL }}</strong> {{ ts.t().MORE_ABOUT_SOFT_2_TEXT }}</li>
+            <li><strong>{{ ts.t().MORE_ABOUT_SOFT_3_LABEL }}</strong> {{ ts.t().MORE_ABOUT_SOFT_3_TEXT }}</li>
+            <li><strong>{{ ts.t().MORE_ABOUT_SOFT_4_LABEL }}</strong> {{ ts.t().MORE_ABOUT_SOFT_4_TEXT }}</li>
           </ul>
         </div>
       </section>

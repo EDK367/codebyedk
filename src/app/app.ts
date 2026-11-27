@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Router, NavigationEnd, RouterOutlet } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { CustomCursor } from './shared/custom-cursor/custom-cursor';
@@ -12,16 +12,17 @@ import { CustomCursor } from './shared/custom-cursor/custom-cursor';
 })
 export class App implements OnInit {
   title = 'Portfolio';
-
-  constructor(private router: Router) {}
+  private router = inject(Router);
 
   ngOnInit() {
     this.router.events.pipe(
       filter((event): event is NavigationEnd => event instanceof NavigationEnd)
-    ).subscribe(() => {
-      setTimeout(() => {
-        window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-      }, 50);
+    ).subscribe((event) => {
+      if (!event.urlAfterRedirects.includes('#')) {
+        setTimeout(() => {
+          window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+        }, 50);
+      }
     });
   }
 }

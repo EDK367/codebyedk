@@ -9,6 +9,7 @@
   flex-direction: column;
   align-items: center;
   gap: 60px;
+  padding: 20px 0 36px;
   overflow: hidden;
 }
 
@@ -65,7 +66,7 @@
 /* ── Orbital System ── */
 .orbital-system-container {
   width: 100%;
-  max-width: 800px;
+  max-width: 680px;
   aspect-ratio: 1;
   position: relative;
   display: flex;
@@ -132,9 +133,9 @@
   pointer-events: none;
 }
 
-.orbit-ring-1 { width: 35%; height: 35%; }
-.orbit-ring-2 { width: 65%; height: 65%; }
-.orbit-ring-3 { width: 95%; height: 95%; }
+.orbit-ring-1 { width: 34%; height: 34%; }
+.orbit-ring-2 { width: 62%; height: 62%; }
+.orbit-ring-3 { width: 90%; height: 90%; }
 
 /* Tech Nodes */
 .tech-node-wrapper {
@@ -146,27 +147,36 @@
   transform: rotate(var(--angle));
 }
 
-.orbit-1 .tech-node { transform: translate(calc(140px * var(--r, 1)), -50%) rotate(calc(-1 * var(--angle) - var(--global-rotation))); }
-.orbit-2 .tech-node { transform: translate(calc(260px * var(--r, 1)), -50%) rotate(calc(-1 * var(--angle) - var(--global-rotation))); }
-.orbit-3 .tech-node { transform: translate(calc(380px * var(--r, 1)), -50%) rotate(calc(-1 * var(--angle) - var(--global-rotation))); }
+.orbit-1 .tech-node-positioner { --orbit-radius: 115px; }
+.orbit-2 .tech-node-positioner { --orbit-radius: 210px; }
+.orbit-3 .tech-node-positioner { --orbit-radius: 306px; }
+
+.tech-node-positioner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(calc(var(--orbit-radius) * var(--r, 1)), 0) rotate(calc(-1 * var(--angle) - var(--global-rotation)));
+}
 
 @media (max-width: 800px) {
-  .orbit-1 .tech-node { --r: 0.8; }
-  .orbit-2 .tech-node { --r: 0.8; }
-  .orbit-3 .tech-node { --r: 0.8; }
+  .orbit-1 .tech-node-positioner { --r: 0.78; }
+  .orbit-2 .tech-node-positioner { --r: 0.78; }
+  .orbit-3 .tech-node-positioner { --r: 0.78; }
 }
 
 @media (max-width: 600px) {
-  .orbit-1 .tech-node { --r: 0.5; }
-  .orbit-2 .tech-node { --r: 0.5; }
-  .orbit-3 .tech-node { --r: 0.5; }
+  .orbit-1 .tech-node-positioner { --r: 0.48; }
+  .orbit-2 .tech-node-positioner { --r: 0.48; }
+  .orbit-3 .tech-node-positioner { --r: 0.48; }
 }
 
 .tech-node {
-  position: absolute;
+  position: relative;
   width: 60px;
   height: 60px;
-  background: var(--glass-bg);
+  margin-left: -30px;
+  margin-top: -30px;
+  background: var(--color-bg-secondary);
   backdrop-filter: blur(10px);
   border: 1px solid var(--glass-border);
   border-radius: 50%;
@@ -176,22 +186,27 @@
   font-size: 24px;
   color: var(--color-text-secondary);
   cursor: pointer;
-  transition: all 0.4s var(--ease-spring);
+  transition: transform 0.35s var(--ease-out-expo), border-color 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease, filter 0.3s ease;
   box-shadow: var(--shadow-sm);
 }
 
+.tech-svg {
+  width: 26px;
+  height: 26px;
+  display: block;
+}
+
 .tech-node:hover, .tech-node.highlighted {
-  transform: translate(calc(var(--orbit-radius) * var(--r, 1)), -50%) rotate(calc(-1 * var(--angle) - var(--global-rotation))) scale(1.3);
-  color: var(--color-bg-primary);
-  background: var(--color-accent);
+  transform: scale(1.25);
+  background: var(--color-bg-tertiary);
   border-color: var(--color-accent);
-  box-shadow: 0 0 20px var(--color-accent-glow);
+  box-shadow: 0 0 24px var(--color-accent-glow);
   z-index: 20;
 }
 
 .tech-node.dimmed {
-  opacity: 0.3;
-  filter: grayscale(100%);
+  opacity: 0.35;
+  filter: grayscale(80%);
 }
 
 .tech-tooltip {
