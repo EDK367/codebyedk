@@ -292,10 +292,17 @@
     }
 
     /* Impresión */
+    @page {
+      size: A4;
+      margin: 0;
+    }
+
     @media print {
       body {
         background: white;
         padding: 0;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
       }
 
       .controls {
@@ -306,7 +313,39 @@
         box-shadow: none;
         border-radius: 0;
         width: 100%;
-        min-height: 100vh;
+        height: 297mm;
+        min-height: auto;
+        overflow: hidden;
+      }
+
+      .cv-header {
+        padding: 26px 36px;
+        gap: 8px;
+      }
+
+      .col-left {
+        padding: 16px 26px;
+      }
+
+      .col-right {
+        padding: 16px 26px 16px 20px;
+      }
+
+      .section {
+        margin-bottom: 12px;
+      }
+
+      .section-title {
+        padding-bottom: 5px;
+        margin-bottom: 8px;
+      }
+
+      .skill-block {
+        margin-bottom: 10px;
+      }
+
+      .cv-footer {
+        margin-top: 10px;
       }
     }
   </style>
@@ -346,9 +385,10 @@
           <div class="section">
             <div class="section-title">¿Quién Soy?</div>
             <div class="section-content">
-              Estudiante de Ingeniería en Ciencias y Sistemas con 1 año de experiencia como freelancer en desarrollo de
-              software y proyectos técnicos en tecnologías como Java (Spring Boot, Quarkus), Elixir, Python, Go,
-              PostgreSQL, Angular y React. Apasionado por la arquitectura limpia y soluciones escalables.
+              Estudiante de 8.º semestre de Ingeniería en Ciencias y Sistemas, con cierre de pensum en Técnico en
+              Desarrollo de Software (pendiente de exámenes privados) y 1 año de experiencia como freelancer en
+              desarrollo de software y proyectos técnicos en tecnologías como Java (Spring Boot, Quarkus), Elixir, Python,
+              Go, PostgreSQL, Angular y React. Apasionado por la arquitectura limpia y soluciones escalables.
             </div>
           </div>
 
@@ -522,6 +562,21 @@
             </div>
           </div>
 
+          <!-- Educación -->
+          <div class="section">
+            <div class="section-title">Educación</div>
+            <div class="section-content">
+              <div class="item-block" style="margin-bottom: 10px;">
+                <div class="item-subtitle">Ingeniería en Ciencias y Sistemas</div>
+                <div class="item-desc">USAC · 8.º semestre en curso</div>
+              </div>
+              <div class="item-block" style="margin-bottom: 0;">
+                <div class="item-subtitle">Técnico en Desarrollo de Software</div>
+                <div class="item-desc">Cierre de pensum (pendiente de exámenes privados)</div>
+              </div>
+            </div>
+          </div>
+
         </div>
 
       </div>
@@ -551,9 +606,10 @@
           <div class="section">
             <div class="section-title">About Me</div>
             <div class="section-content">
-              Systems Engineering student with 1 year of freelance software development experience and technical projects
-              across Java (Spring Boot, Quarkus), Elixir, Python, Go, PostgreSQL, Angular, and React. Passionate about
-              clean architecture and scalable systems.
+              8th-semester Systems Engineering student with completed coursework (pensum closed, pending final
+              comprehensive exams) for a Technical Degree in Software Development, 1 year of freelance software
+              development experience, and technical projects across Java (Spring Boot, Quarkus), Elixir, Python, Go,
+              PostgreSQL, Angular, and React. Passionate about clean architecture and scalable systems.
             </div>
           </div>
 
@@ -725,6 +781,21 @@
             </div>
           </div>
 
+          <!-- Education -->
+          <div class="section">
+            <div class="section-title">Education</div>
+            <div class="section-content">
+              <div class="item-block" style="margin-bottom: 10px;">
+                <div class="item-subtitle">B.S. in Systems Engineering</div>
+                <div class="item-desc">USAC · 8th semester (in progress)</div>
+              </div>
+              <div class="item-block" style="margin-bottom: 0;">
+                <div class="item-subtitle">Technical Degree in Software Development</div>
+                <div class="item-desc">Coursework completed (pending final exams)</div>
+              </div>
+            </div>
+          </div>
+
         </div>
 
       </div>
@@ -736,6 +807,11 @@
   <script>
     function setLang(lang) {
       document.body.classList.toggle('show-en', lang === 'en');
+    }
+
+    const urlLang = new URLSearchParams(window.location.search).get('lang');
+    if (urlLang === 'en' || urlLang === 'es') {
+      setLang(urlLang);
     }
 
     function downloadPDF() {
@@ -788,8 +864,8 @@
       });
     }
 
-    // Idioma inicial según navegador
-    if (navigator.language && navigator.language.startsWith('en')) {
+    // Idioma inicial según URL o navegador
+    if (!urlLang && navigator.language && navigator.language.startsWith('en')) {
       document.body.classList.add('show-en');
     }
   </script>
