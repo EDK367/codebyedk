@@ -140,7 +140,7 @@
       border-left: 1px solid #e5e7eb;
     }
 
-    @media (max-width: 750px) {
+    @media screen and (max-width: 750px) {
       .cv-wrapper {
         width: 100%;
         min-height: auto;
@@ -312,14 +312,18 @@
       .cv-wrapper {
         box-shadow: none;
         border-radius: 0;
-        width: 100%;
+        width: 210mm;
         height: 297mm;
         min-height: auto;
         overflow: hidden;
       }
 
+      .cv-body {
+        grid-template-columns: 60% 40% !important;
+      }
+
       .cv-header {
-        padding: 26px 36px;
+        padding: 24px 36px;
         gap: 8px;
       }
 
@@ -329,6 +333,8 @@
 
       .col-right {
         padding: 16px 26px 16px 20px;
+        border-left: 1px solid #e5e7eb !important;
+        border-top: none !important;
       }
 
       .section {
@@ -474,7 +480,7 @@
             <div class="section-content">
               <div class="info-block">
                 <div class="info-title"><i class="fas fa-globe"></i> Sitio web</div>
-                <a href="https://www.solairy.app/" target="_blank" class="info-value">solairy.app</a>
+                <a href="https://solairy.app/" target="_blank" class="info-value">solairy.app</a>
               </div>
               <div class="info-block">
                 <div class="info-title"><i class="fab fa-linkedin"></i> LinkedIn</div>
@@ -693,7 +699,7 @@
             <div class="section-content">
               <div class="info-block">
                 <div class="info-title"><i class="fas fa-globe"></i> Website</div>
-                <a href="https://www.solairy.app/" target="_blank" class="info-value">solairy.app</a>
+                <a href="https://solairy.app/" target="_blank" class="info-value">solairy.app</a>
               </div>
               <div class="info-block">
                 <div class="info-title"><i class="fab fa-linkedin"></i> LinkedIn</div>
